@@ -13,7 +13,7 @@
         background-image: url("https://fullbasket.es/wp-content/uploads/2015/10/52544da01d1ad.jpg");
         background-size: 100%;
         font-size: 50px;
-        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
         color: white;
         opacity: 0.9;
     }
@@ -29,9 +29,11 @@
         transform: scale(1.1);
     }
 
+    /* treu borde a tots els botons */
+    button:focus {outline:0;}
+
     #ball:hover {
         transform: scale(1.20);
-
     }
 
     #ball:active {
@@ -52,7 +54,7 @@
     #ballseller {
         display: flex;
         font-size: 100%;
-        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
         width: 200px;
         height: 80px;
         background-color: white;
@@ -365,7 +367,7 @@
 
             } else {
                 ballNum++;
-                document.getElementById("balls").innerHTML = ballNum;
+                document.getElementById("balls").innerHTML = Intl.NumberFormat("de-DE").format(ballNum);
             }
         }
 
@@ -386,8 +388,8 @@
             if (ballNum > 0) {
                 walletEuros = walletEuros + (ballNum * 0.10 * (Math.pow(2, doblecodigo)));
                 ballNum = 0;
-                document.getElementById("balls").innerHTML = ballNum;
-                document.getElementById("wallet").innerHTML = walletEuros.toFixed(2);
+                document.getElementById("balls").innerHTML = Intl.NumberFormat("de-DE").format(ballNum);
+                document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
             }
         }
         //minion
@@ -395,8 +397,8 @@
             if (walletEuros >= PREUPUSTOVYI && pustovyis < 50 * smitss) {
                 walletEuros = walletEuros - PREUPUSTOVYI;
                 pustovyis++;
-                document.getElementById("wallet").innerHTML = walletEuros.toFixed(2);
-                document.getElementById("pustovyi").innerHTML = pustovyis;
+                document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
+                document.getElementById("pustovyi").innerHTML = Intl.NumberFormat("de-DE").format(pustovyis);
             }
             else if (pustovyis == 50 * smitss) {
                 alert("Has de comprar més Smits per poder comprar més Pustovyis")
@@ -410,8 +412,8 @@
             if (walletEuros >= PREUSMITS) {
                 walletEuros = walletEuros - PREUSMITS;
                 smitss++;
-                document.getElementById("smits").innerHTML = smitss - 1;
-                document.getElementById("wallet").innerHTML = walletEuros.toFixed(2);
+                document.getElementById("smits").innerHTML = Intl.NumberFormat("de-DE").format(smitss - 1);
+                document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
             }
             else {
                 alert("Et falten monedes. Preu " + PREUSMITS + "€");
@@ -422,8 +424,8 @@
             if (walletEuros >= PREURIBAS) {
                 walletEuros = walletEuros - PREURIBAS;
                 ribass++;
-                document.getElementById("ribas").innerHTML = ribass - 1;
-                document.getElementById("wallet").innerHTML = walletEuros.toFixed(2);
+                document.getElementById("ribas").innerHTML = Intl.NumberFormat("de-DE").format(ribass - 1);
+                document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
             }
             else {
                 alert("Et falten monedes. Preu: " + PREURIBAS + "€");
@@ -438,8 +440,8 @@
                     interval = interval / 10;
                     clearInterval(timer);
                     timer = setInterval(ActualizarPustovyi, 1000 * interval);
-                    document.getElementById("oriola").innerHTML = oriolas;
-                    document.getElementById("wallet").innerHTML = walletEuros.toFixed(2);
+                    document.getElementById("oriola").innerHTML = Intl.NumberFormat("de-DE").format(oriolas);
+                    document.getElementById("wallet").innerHTML = (walletEuros.toFixed(2));
                 }
                 else {
                     alert("Et falten monedes. Preu: " + PREUORIOLA + "€");
@@ -458,8 +460,8 @@
                     interval = interval / 2;
                     clearInterval(timer);
                     timer = setInterval(ActualizarPustovyi, 1000 * interval);
-                    document.getElementById("tomic").innerHTML = tomics;
-                    document.getElementById("wallet").innerHTML = walletEuros.toFixed(2);
+                    document.getElementById("tomic").innerHTML = Intl.NumberFormat("de-DE").format(tomics);
+                    document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
                 }
                 else {
                     alert("Et falten monedes. Preu: " + PREUTOMIC + "€");
@@ -480,8 +482,8 @@
                     interval = interval / 10;
                     clearInterval(timer);
                     timer = setInterval(ActualizarPustovyi, 1000 * interval);
-                    document.getElementById("pangos").innerHTML = pangoss;
-                    document.getElementById("wallet").innerHTML = walletEuros.toFixed(2);
+                    document.getElementById("pangos").innerHTML = Intl.NumberFormat("de-DE").format(pangoss);
+                    document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
                 }
                 else {
                     alert("Et falten monedes. Preu: " + pustovyis * preuPangos + "€");
@@ -502,8 +504,8 @@
                         interval = interval / 4;
                         clearInterval(timer);
                         timer = setInterval(ActualizarPustovyi, 1000 * interval);
-                        document.getElementById("abrines").innerHTML = abriness;
-                        document.getElementById("wallet").innerHTML = walletEuros.toFixed(2);
+                        document.getElementById("abrines").innerHTML = Intl.NumberFormat("de-DE").format(abriness);
+                        document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
                     }
                     else {
                         alert("Et falten monedes. Preu: " + PREUABRINES + "€");
@@ -528,8 +530,8 @@
                         interval = interval / 50;
                         clearInterval(timer);
                         timer = setInterval(ActualizarPustovyi, 1000 * interval);
-                        document.getElementById("kuric").innerHTML = kurics;
-                        document.getElementById("wallet").innerHTML = walletEuros.toFixed(2);
+                        document.getElementById("kuric").innerHTML = Intl.NumberFormat("de-DE").format(kurics);
+                        document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
                     }
                     else {
                         alert("Et falten monedes. Preu: " + PREUKURIC + "€");
@@ -554,8 +556,8 @@
                         delaneys++;
                         clearInterval(timer);
                         timer = setInterval(ActualizarPustovyi, 1000 * interval);
-                        document.getElementById("delaney").innerHTML = delaneys;
-                        document.getElementById("wallet").innerHTML = walletEuros.toFixed(2);
+                        document.getElementById("delaney").innerHTML = Intl.NumberFormat("de-DE").format(delaneys);
+                        document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
                     }
                     else {
                         alert("Et falten monedes. Preu: " + PREUDELANEY + "€");
@@ -581,8 +583,8 @@
                         clavers++;
                         clearInterval(timer);
                         timer = setInterval(ActualizarPustovyi, 1000 * interval);
-                        document.getElementById("claver").innerHTML = clavers;
-                        document.getElementById("wallet").innerHTML = walletEuros.toFixed(2);
+                        document.getElementById("claver").innerHTML = Intl.NumberFormat("de-DE").format(clavers);
+                        document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
                     }
                     else {
                         alert("Et falten monedes. Preu: " + PREUCLAVER + "€");
@@ -607,8 +609,8 @@
                         heurtels++;
                         clearInterval(timer);
                         timer = setInterval(ActualizarPustovyi, 1000 * interval);
-                        document.getElementById("heurtel").innerHTML = heurtels;
-                        document.getElementById("wallet").innerHTML = walletEuros.toFixed(2);
+                        document.getElementById("heurtel").innerHTML = Intl.NumberFormat("de-DE").format(heurtels);
+                        document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
                     }
                     else {
                         alert("Et falten monedes. Preu: " + PREUHEURTEL + "€");
@@ -633,8 +635,8 @@
                         hangas++;
                         clearInterval(timer);
                         timer = setInterval(ActualizarPustovyi, 1000 * interval);
-                        document.getElementById("hanga").innerHTML = hangas - 1;
-                        document.getElementById("wallet").innerHTML = walletEuros.toFixed(2);
+                        document.getElementById("hanga").innerHTML = Intl.NumberFormat("de-DE").format(hangas - 1);
+                        document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
                     }
                     else {
                         alert("Et falten monedes. Preu: " + PREUHANGA + "€");
