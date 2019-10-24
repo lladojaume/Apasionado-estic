@@ -13,7 +13,7 @@
         background-image: url("https://fullbasket.es/wp-content/uploads/2015/10/52544da01d1ad.jpg");
         background-size: 100%;
         font-size: 50px;
-        /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; 
         color: white;
         opacity: 0.9;
     }
@@ -49,12 +49,15 @@
     #punts {
         display: flex;
         justify-content: space-between;
+        font-family:Arial, Helvetica, sans-serif;
+
     }
 
     #ballseller {
         display: flex;
         font-size: 100%;
-        /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
+        justify-content:space-around;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         width: 200px;
         height: 80px;
         background-color: white;
@@ -153,7 +156,7 @@
                 <button id="ribasbuy"><img class="player" src="ribas.jpg"></img></button>
                 <div class="tooltip">
                     <p>Pau Ribas: <a id="ribas">0</a></p>
-                    <span class="tooltiptext">Cada Ribas permet contractar 50 Pustovyis nous</span>
+                    <span class="tooltiptext">Cada Ribas permet emmagatzemar 10000000 de punts</span>
                 </div>
                 <p class="price"><span id="PREURIBAS"></span>€</p>
             </div>
@@ -161,8 +164,8 @@
             <div class="quadre">
                 <button id="oriolabuy"><img class="player" src="oriola.jpg"></img></button>
                 <div class="tooltip">
-                        <p>Pierre Oriola: <a id="oriola">0</a></p>
-                        <span class="tooltiptext">Cada Ribas permet contractar 50 Pustovyis nous</span>
+                        <p>Pierre Oriola: <a id="oriola">0</a>/1</p>
+                        <span class="tooltiptext">Incrementa la productivitat dels Pustovyis x10</span>
                     </div>
                 <p class="price"><span id="PREUORIOLA"></span>€</p>
             </div>
@@ -170,8 +173,8 @@
             <div class="quadre">
                 <button id="tomicbuy"><img class="player" src="tomic.jpg"></img></button>
                 <div class="tooltip">
-                        <p>Ante Tomic: <a id="tomic">0</a></p>
-                        <span class="tooltiptext">Cada Ribas permet contractar 50 Pustovyis nous</span>
+                        <p>Ante Tomic: <a id="tomic">0</a>/1</p>
+                        <span class="tooltiptext">Incrementa la productivitat dels Pustovyis x2</span>
                     </div>
                 <p class="price"><span id="PREUTOMIC"></span>€</p>
 
@@ -183,7 +186,7 @@
                 <button id="pangosbuy"><img class="player" src="pangos.jpg"></img></button>
                 <div class="tooltip">
                         <p>Kevin Pangos: <a id="pangos">0</a></p>
-                        <span class="tooltiptext">Cada Ribas permet contractar 50 Pustovyis nous</span>
+                        <span class="tooltiptext">Cada Pangos incrementa la productivitat dels Pustovyis x10</span>
                     </div>
                 <p class="price"><span id="preuPangos"></span>€</p>
 
@@ -195,8 +198,8 @@
             <div class="quadre">
                 <button id="abrinesbuy"><img class="player" src="abrines.jpg"></img></button>
                 <div class="tooltip">
-                        <p>Alex Abrines: <a id="abrines">0</a></p>
-                        <span class="tooltiptext">Cada Ribas permet contractar 50 Pustovyis nous</span>
+                        <p>Alex Abrines: <a id="abrines">0</a>/1</p>
+                        <span class="tooltiptext">Incrementa la productivitat dels Pustovyis x4</span>
                     </div>
                 <p class="price"><span id="PREUABRINES"></span>€</p>
 
@@ -206,8 +209,8 @@
             <div class="quadre">
                 <button id="kuricbuy"><img class="player" src="kuric.jpg"></img></button>
                 <div class="tooltip">
-                        <p>Kyle Kuric: <a id="kuric">0</a></p>
-                        <span class="tooltiptext">Cada Ribas permet contractar 50 Pustovyis nous</span>
+                        <p>Kyle Kuric: <a id="kuric">0</a>/1</p>
+                        <span class="tooltiptext">Incrementa la productivitat dels Pustovyis x50</span>
                     </div>
                 <p class="price"><span id="PREUKURIC"></span>€</p>
 
@@ -216,8 +219,8 @@
             <div class="quadre">
                 <button id="delaneybuy"><img class="player" src="delaney.jpg"></img></button>
                 <div class="tooltip">
-                        <p>Malcom Delaney: <a id="delaney">0</a></p>
-                        <span class="tooltiptext">Cada Ribas permet contractar 50 Pustovyis nous</span>
+                        <p>Malcom Delaney: <a id="delaney">0</a>/1</p>
+                        <span class="tooltiptext">Duplica el preu de venta dels punts</span>
                     </div>
                 <p class="price"><span id="PREUDELANEY"></span>€</p>
 
@@ -226,8 +229,8 @@
             <div class="quadre">
                 <button id="claverbuy"><img class="player" src="claver.jpg"></img></button>
                 <div class="tooltip">
-                        <p>Victor Claver: <a id="claver">0</a></p>
-                        <span class="tooltiptext">Cada Ribas permet contractar 50 Pustovyis nous</span>
+                        <p>Victor Claver: <a id="claver">0</a>/1</p>
+                        <span class="tooltiptext">Duplica el preu de venta dels punts</span>
                     </div>
                 <p class="price"><span id="PREUCLAVER"></span>€</p>
 
@@ -237,8 +240,8 @@
             <div class="quadre">
                 <button id="heurtelbuy"><img class="player" src="heurtel.jpg"></img></button>
                 <div class="tooltip">
-                        <p>Thomas Heurtel: <a id="heurtel">0</a></p>
-                        <span class="tooltiptext">Cada Ribas permet contractar 50 Pustovyis nous</span>
+                        <p>Thomas Heurtel: <a id="heurtel">0</a>/1</p>
+                        <span class="tooltiptext">Duplica el preu de venta dels punts</span>
                     </div>
                 <p class="price"><span id="PREUHEURTEL"></span>€</p>
 
@@ -247,8 +250,8 @@
             <div class="quadre">
                 <button id="hangabuy"><img class="player" src="hanga.jpg"></img></button>
                 <div class="tooltip">
-                        <p>Adam Hanga: <a id="hanga">0</a></p>
-                        <span class="tooltiptext">Cada Ribas permet contractar 50 Pustovyis nous</span>
+                        <p>Adam Hanga: <a id="hanga">0</a>/1</p>
+                        <span class="tooltiptext">Duplica la capacitat d'emmagatzematge dels Pau Ribas</span>
                     </div>
                 <p class="price"><span id="PREUHANGA"></span>€</p>
 
@@ -399,7 +402,7 @@
                 walletEuros = walletEuros - PREUPUSTOVYI;
                 pustovyis++;
                 document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
-                document.getElementById("pustovyi").innerHTML = Intl.NumberFormat("de-DE").format(pustovyis);
+                document.getElementById("pustovyi").innerHTML = Intl.NumberFormat("de-DE").format(pustovyis)+"/"+50*smitss;
             }
             else if (pustovyis == 50 * smitss) {
                 alert("Has de comprar més Smits per poder comprar més Pustovyis")
@@ -415,6 +418,8 @@
                 smitss++;
                 document.getElementById("smits").innerHTML = Intl.NumberFormat("de-DE").format(smitss - 1);
                 document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
+                document.getElementById("pustovyi").innerHTML = Intl.NumberFormat("de-DE").format(pustovyis)+"/"+50*smitss;
+
             }
             else {
                 alert("Et falten monedes. Preu " + PREUSMITS + "€");
