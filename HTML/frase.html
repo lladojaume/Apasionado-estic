@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>FRASE<a id="frase"></a></p>
+    <textarea id="text" rows="4" cols="50"></textarea>
+
+    
+
+    
+
+    <p>CARACTERES: <a id="caracteres">0</a></p>
+    <p>LETRAS: <a id="letras">0</a></p>
+    <p>PALABRAS: <a id="palabras">0</a></p>
+
+
+    
+    <script>
+        
+        function caracteristicasFrase(){
+            var llegit=document.getElementById("text");
+            document.getElementById("caracteres").innerHTML=llegit.value.length;
+            document.getElementById("letras").innerHTML=llegit.value.replace(/\s/g,'').length;
+            document.getElementById("palabras").innerHTML=llegit.value.split(" ").filter(function(e){return e.length>0}).length;
+            
+
+
+        }
+
+        text.addEventListener("keyup",caracteristicasFrase);
+
+
+
+
+    
+    </script>
+    
+    
+</body>
+</html>

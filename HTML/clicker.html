@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+<style>
+    body {
+        background-image: url("https://fullbasket.es/wp-content/uploads/2015/10/52544da01d1ad.jpg");
+        background-size: 100%;
+        font-size: 50px;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        color: white;
+        opacity: 0.9;
+    }
+
+    #monedetes {
+        max-width: 40%;
+    }
+
+    #ball {
+        width: 400px;
+        height: 400px;
+        border-radius: 50%;
+        transform: scale(1.1);
+    }
+
+    #ball:active {
+        transform: scale(1.15);
+
+    }
+
+    #ballcreator {
+        background-color: transparent;
+        border-radius: 50%;
+    }
+
+    #punts {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #ballseller {
+        display: flex;
+        font-size: 100%;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        width: 200px;
+        height: 80px;
+        background-color: white;
+        opacity: 0.9;
+    }
+
+    .player {
+        width: 240px;
+        height: 150px;
+    }
+
+    #quadregran {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .quadre {
+        display: flex;
+        justify-content: space-around;
+        margin:30px;
+    }
+
+    #jugadors {
+        border: 2px solid black;
+        width: 50%;
+        opacity: 0.9;
+        background-color: white;
+        font-size: 25px;
+        overflow: scroll;
+        height: 800px;
+        margin-top: 60px;
+        color: black;
+        overflow-x: hidden;
+    }
+
+    .tooltip {
+        position: relative;
+        display: inline-block;
+    }
+
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 300px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+
+        /* Position the tooltip */
+        position: absolute;
+        z-index: 1;
+    }
+
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+    }
+</style>
+
+<body>
+    <div id="quadregran">
+        <div id="monedetes">
+            <img src="logo.jpg"></img>
+            <p style="margin-top: 5px;">Monedero: <a id="wallet">0</a>€</p>
+            <button id="ballcreator"><img id="ball" src="pelota.jpg"></img></button>
+            <div id="punts">
+                <p>Puntos: <a id="balls">0</a></p>
+                <button id="ballseller" style="margin-top:40px; margin-left:20px">Sell ball</button>
+            </div>
+            <br>
+        </div>
+
+        <div id="jugadors">
+            <div class="quadre">
+                <button id="pustovyibuy"><img class="player" src="pustovyi.jpg"></img></button>
+                <div class="tooltip">
+                    <p>Artem Pustovyi: <a id="pustovyi">0</a></p>
+                    <span class="tooltiptext">Cada Pustovyi anota un punt cada 10 segons</span>
+                </div>
+                <p class="price"><span id="PREUPUSTOVYI"></span>€</p>
+            </div>
+            <br>
+            <div class="quadre">
+
+                <button id="smitsbuy"><img class="player" src="smits.jpg"></img></button>
+                <div class="tooltip">
+                    <p>Rolands Smits: <a id="smits">0</a></p>
+                    <span class="tooltiptext">Cada Smits permet contractar 50 Pustovyis nous</span>
+                </div>
+                <p class="price"><span id="PREUSMITS"></span>€</p>
+            </div>
+            <br>
+            <div class="quadre">
+                <button id="ribasbuy"><img class="player" src="ribas.jpg"></img></button>
+                <p>Pau Ribas: <a id="ribas">0</a></p>
+                <p class="price"><span id="PREURIBAS"></span>€</p>
+            </div>
+            <br>
+            <div class="quadre">
+                <button id="oriolabuy"><img class="player" src="oriola.jpg"></img></button>
+                <p>Pierre Oriola: <a id="oriola">0</a></p>
+                <p class="price"><span id="PREUORIOLA"></span>€</p>
+            </div>
+            <br>
+            <div class="quadre">
+                <button id="tomicbuy"><img class="player" src="tomic.jpg"></img></button>
+                <p>Ante Tomic: <a id="tomic">0</a></p>
+                <p class="price"><span id="PREUTOMIC"></span>€</p>
+
+            </div>
+
+
+            <br>
+            <div class="quadre">
+                <button id="pangosbuy"><img class="player" src="pangos.jpg"></img></button>
+                <p>Kevin Pangos: <a id="pangos">0</a></p>
+                <p class="price"><span id="preuPangos"></span>€</p>
+
+            </div>
+
+
+
+            <br>
+            <div class="quadre">
+                <button id="abrinesbuy"><img class="player" src="abrines.jpg"></img></button>
+                <p>Alex Abrines: <a id="abrines">0</a></p>
+                <p class="price"><span id="PREUABRINES"></span>€</p>
+
+            </div>
+
+            <br>
+            <div class="quadre">
+                <button id="kuricbuy"><img class="player" src="kuric.jpg"></img></button>
+                <p>Kyle Kuric: <a id="kuric">0</a></p>
+                <p class="price"><span id="PREUKURIC"></span>€</p>
+
+            </div>
+            <br>
+            <div class="quadre">
+                <button id="delaneybuy"><img class="player" src="delaney.jpg"></img></button>
+                <p>Malcom Delaney: <a id="delaney">0</a></p>
+                <p class="price"><span id="PREUDELANEY"></span>€</p>
+
+            </div>
+            <br>
+            <div class="quadre">
+                <button id="claverbuy"><img class="player" src="claver.jpg"></img></button>
+                <p>Victor Claver: <a id="claver">0</a></p>
+                <p class="price"><span id="PREUCLAVER"></span>€</p>
+
+            </div>
+            <br>
+
+            <div class="quadre">
+                <button id="heurtelbuy"><img class="player" src="heurtel.jpg"></img></button>
+                <p>Thomas Heurtel: <a id="heurtel">0</a></p>
+                <p class="price"><span id="PREUHEURTEL"></span>€</p>
+
+            </div>
+            <br>
+            <div class="quadre">
+                <button id="hangabuy"><img class="player" src="hanga.jpg"></img></button>
+                <p>Adam Hanga: <a id="hanga">0</a></p>
+                <p class="price"><span id="PREUHANGA"></span>€</p>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        var btnBallCreator = document.getElementById("ballcreator");
+        var btnBallSeller = document.getElementById("ballseller");
+        var btnBuyPustovy = document.getElementById("pustovyibuy");
+        var btnBuySmits = document.getElementById("smitsbuy");
+        var btnBuyRibas = document.getElementById("ribasbuy");
+        var btnBuyOriola = document.getElementById("oriolabuy");
+        var btnBuyTomic = document.getElementById("tomicbuy");
+        var btnBuyPangos = document.getElementById("pangosbuy");
+        var btnBuyAbrines = document.getElementById("abrinesbuy");
+        var btnBuyKuric = document.getElementById("kuricbuy");
+        var btnBuyDelaney = document.getElementById("delaneybuy");
+        var btnBuyClaver = document.getElementById("claverbuy");
+        var btnBuyHeurtel = document.getElementById("heurtelbuy");
+        var btnBuyHanga = document.getElementById("hangabuy");
+
+
+
+
+
+
+        let interval = 10;//Cada 10 segons el pustovyi fa una pilota
+        let ballNum = 0;
+        let walletEuros = 0;
+        let pustovyis = 0;
+        let smitss = 1;
+        let capacitatRibas = 10000000;//Capacitat ribas(disc dur)
+        let ribass = 1;
+        let oriolas = 0;
+        let tomics = 0;
+        let pangoss = 0;
+        let abriness = 0;
+        let kurics = 0;
+        let delaneys = 0;
+        let clavers = 0;
+        let heurtels = 0;
+        let doblecodigo = delaneys + clavers + heurtels;//quantitat de multiplicadors preu codi(1,2,3)
+        let hangas = 1;//val 1 si no tenim compresión, 2 si la tenim
+
+
+        //PREUS
+        const PREUPUSTOVYI = 10;
+        const PREUSMITS = 1000;
+        const PREURIBAS = 100;
+        const PREUORIOLA = 1000;
+        const PREUTOMIC = 500;
+        let preuPangos = 200;//Preu inicial incentivo per cada minion        
+        const PREUABRINES = 10000;
+        const PREUKURIC = 100000;
+        const PREUDELANEY = 1000;
+        const PREUCLAVER = 2000;
+        const PREUHEURTEL = 5000;
+        const PREUHANGA = 1000;
+
+
+        //IMPRIMIR PREU
+        document.getElementById("PREUPUSTOVYI").innerText = PREUPUSTOVYI;
+        document.getElementById("PREUSMITS").innerText = PREUSMITS;
+        document.getElementById("PREURIBAS").innerText = PREURIBAS;
+        document.getElementById("PREUORIOLA").innerText = PREUORIOLA;
+        document.getElementById("PREUTOMIC").innerText = PREUTOMIC;
+        document.getElementById("preuPangos").innerText = preuPangos;
+        document.getElementById("PREUABRINES").innerText = PREUABRINES;
+        document.getElementById("PREUKURIC").innerText = PREUKURIC;
+        document.getElementById("PREUDELANEY").innerText = PREUDELANEY;
+        document.getElementById("PREUCLAVER").innerText = PREUCLAVER;
+        document.getElementById("PREUHEURTEL").innerText = PREUHEURTEL;
+        document.getElementById("PREUHANGA").innerText = PREUHANGA;
+
+
+
+
+
+
+
+
+
+
+
+        btnBallCreator.addEventListener("click", IncrementBall);
+        btnBallSeller.addEventListener("click", SellBall);
+        btnBuyPustovy.addEventListener("click", BuyPustovy);
+        btnBuySmits.addEventListener("click", BuySmits);
+        btnBuyRibas.addEventListener("click", BuyRibas);
+        btnBuyOriola.addEventListener("click", BuyOriola);
+        btnBuyTomic.addEventListener("click", BuyTomic);
+        btnBuyPangos.addEventListener("click", BuyPangos);
+        btnBuyAbrines.addEventListener("click", BuyAbrines);
+        btnBuyKuric.addEventListener("click", BuyKuric);
+        btnBuyDelaney.addEventListener("click", BuyDelaney);
+        btnBuyClaver.addEventListener("click", BuyClaver);
+        btnBuyHeurtel.addEventListener("click", BuyHeurtel);
+        btnBuyHanga.addEventListener("click", BuyHanga);
+
+
+
+
+
+
+
+
+
+        function IncrementBall() {
+            if (ballNum > 10000000 * ribass) {
+                alert("Has de comprar més Pau Ribas");
+                clearInterval(timer);
+                timer = setInterval(ActualizarPustovyi, 1000 * interval);
+
+            } else {
+                ballNum++;
+                document.getElementById("balls").innerHTML = ballNum;
+            }
+        }
+
+        function ActualizarPustovyi() {
+            if (ballNum < 10000000 * ribass * hangas) {
+                ballNum = ballNum + pustovyis;
+                document.getElementById("balls").innerHTML = ballNum;
+            }
+            else {
+                clearInterval(timer);
+                timer = setInterval(ActualizarPustovyi, 1000 * interval);
+            }
+        }
+
+        timer = setInterval(ActualizarPustovyi, 1000 * interval);
+
+        function SellBall() {
+            if (ballNum > 0) {
+                walletEuros = walletEuros + (ballNum * 0.10 * (Math.pow(2, doblecodigo)));
+                ballNum = 0;
+                document.getElementById("balls").innerHTML = ballNum;
+                document.getElementById("wallet").innerHTML = walletEuros.toFixed(2);
+            }
+        }
+        //minion
+        function BuyPustovy() {
+            if (walletEuros >= PREUPUSTOVYI && pustovyis < 50 * smitss) {
+                walletEuros = walletEuros - PREUPUSTOVYI;
+                pustovyis++;
+                document.getElementById("wallet").innerHTML = walletEuros.toFixed(2);
+                document.getElementById("pustovyi").innerHTML = pustovyis;
+            }
+            else if (pustovyis == 50 * smitss) {
+                alert("Has de comprar més Smits per poder comprar més Pustovyis")
+
+            } else {
+                alert("Et falten monedes. Preu: " + PREUPUSTOVYI + "€");
+            }
+        }
+        //oficina
+        function BuySmits() {
+            if (walletEuros >= PREUSMITS) {
+                walletEuros = walletEuros - PREUSMITS;
+                smitss++;
+                document.getElementById("smits").innerHTML = smitss - 1;
+                document.getElementById("wallet").innerHTML = walletEuros.toFixed(2);
+            }
+            else {
+                alert("Et falten monedes. Preu " + PREUSMITS + "€");
+            }
+        }
+        //disco duro
+        function BuyRibas() {
+            if (walletEuros >= PREURIBAS) {
+                walletEuros = walletEuros - PREURIBAS;
+                ribass++;
+                document.getElementById("ribas").innerHTML = ribass - 1;
+                document.getElementById("wallet").innerHTML = walletEuros.toFixed(2);
+            }
+            else {
+                alert("Et falten monedes. Preu: " + PREURIBAS + "€");
+            }
+        }
+        //formador
+        function BuyOriola() {
+            if (oriolas < 1) {
+                if (walletEuros >= PREUORIOLA) {
+                    walletEuros = walletEuros - PREUORIOLA;
+                    oriolas++;
+                    interval = interval / 10;
+                    clearInterval(timer);
+                    timer = setInterval(ActualizarPustovyi, 1000 * interval);
+                    document.getElementById("oriola").innerHTML = oriolas;
+                    document.getElementById("wallet").innerHTML = walletEuros.toFixed(2);
+                }
+                else {
+                    alert("Et falten monedes. Preu: " + PREUORIOLA + "€");
+                }
+            }
+            else {
+                alert("Només en pots tenir un!");
+            }
+        }
+        //maquina cafe
+        function BuyTomic() {
+            if (tomics < 1) {
+                if (walletEuros >= PREUTOMIC) {
+                    walletEuros = walletEuros - PREUTOMIC;
+                    tomics++;
+                    interval = interval / 2;
+                    clearInterval(timer);
+                    timer = setInterval(ActualizarPustovyi, 1000 * interval);
+                    document.getElementById("tomic").innerHTML = tomics;
+                    document.getElementById("wallet").innerHTML = walletEuros.toFixed(2);
+                }
+                else {
+                    alert("Et falten monedes. Preu: " + PREUTOMIC + "€");
+                }
+            }
+            else {
+                alert("Només en pots tenir un!");
+            }
+        }
+
+        //incentivo
+        function BuyPangos() {
+            if (pustovyis > 0) {
+                if (walletEuros >= pustovyis * preuPangos) {
+                    walletEuros = walletEuros - (pustovyis * preuPangos);
+                    pangoss++;
+                    preuPangos = preuPangos * 2;
+                    interval = interval / 10;
+                    clearInterval(timer);
+                    timer = setInterval(ActualizarPustovyi, 1000 * interval);
+                    document.getElementById("pangos").innerHTML = pangoss;
+                    document.getElementById("wallet").innerHTML = walletEuros.toFixed(2);
+                }
+                else {
+                    alert("Et falten monedes. Preu: " + pustovyis * preuPangos + "€");
+                }
+            }
+            else {
+                alert("No tens cap Pustovyi per millorar.")
+            }
+        }
+
+        //SCRUM
+        function BuyAbrines() {
+            if (pustovyis >= 500) {
+                if (abriness < 1) {
+                    if (walletEuros >= PREUABRINES) {
+                        walletEuros = walletEuros - PREUABRINES;
+                        abriness++;
+                        interval = interval / 4;
+                        clearInterval(timer);
+                        timer = setInterval(ActualizarPustovyi, 1000 * interval);
+                        document.getElementById("abrines").innerHTML = abriness;
+                        document.getElementById("wallet").innerHTML = walletEuros.toFixed(2);
+                    }
+                    else {
+                        alert("Et falten monedes. Preu: " + PREUABRINES + "€");
+                    }
+                }
+                else {
+                    alert("Només en pots tenir un!");
+                }
+            }
+            else {
+                alert("Has de tenir 500 Pustovyis!");
+            }
+        }
+
+        //CTO
+        function BuyKuric() {
+            if (pustovyis >= 500) {
+                if (kurics < 1) {
+                    if (walletEuros >= PREUKURIC) {
+                        walletEuros = walletEuros - PREUKURIC;
+                        kurics++;
+                        interval = interval / 50;
+                        clearInterval(timer);
+                        timer = setInterval(ActualizarPustovyi, 1000 * interval);
+                        document.getElementById("kuric").innerHTML = kurics;
+                        document.getElementById("wallet").innerHTML = walletEuros.toFixed(2);
+                    }
+                    else {
+                        alert("Et falten monedes. Preu: " + PREUKURIC + "€");
+                    }
+                }
+                else {
+                    alert("Només en pots tenir un!");
+                }
+            }
+            else {
+                alert("Has de tenir 500 Pustovyis!");
+            }
+        }
+
+        //COMERCIAL
+        //PREU 1000€ INCREMENTA PREU PILOTA x2
+        function BuyDelaney() {
+            if (pustovyis >= 500) {
+                if (delaneys < 1) {
+                    if (walletEuros >= PREUDELANEY) {
+                        walletEuros = walletEuros - PREUDELANEY;
+                        delaneys++;
+                        clearInterval(timer);
+                        timer = setInterval(ActualizarPustovyi, 1000 * interval);
+                        document.getElementById("delaney").innerHTML = delaneys;
+                        document.getElementById("wallet").innerHTML = walletEuros.toFixed(2);
+                    }
+                    else {
+                        alert("Et falten monedes. Preu: " + PREUDELANEY + "€");
+                    }
+                }
+                else {
+                    alert("Només en pots tenir un!");
+                }
+            }
+            else {
+                alert("Has de tenir 500 Pustovyis!");
+            }
+        }
+
+
+        //CAMPAÑA
+        //PREU 2000€ INCREMENTA PREU PILOTA x2
+        function BuyClaver() {
+            if (pustovyis >= 500) {
+                if (clavers < 1) {
+                    if (walletEuros >= PREUCLAVER) {
+                        walletEuros = walletEuros - PREUCLAVER;
+                        clavers++;
+                        clearInterval(timer);
+                        timer = setInterval(ActualizarPustovyi, 1000 * interval);
+                        document.getElementById("claver").innerHTML = clavers;
+                        document.getElementById("wallet").innerHTML = walletEuros.toFixed(2);
+                    }
+                    else {
+                        alert("Et falten monedes. Preu: " + PREUCLAVER + "€");
+                    }
+                }
+                else {
+                    alert("Només en pots tenir un!");
+                }
+            }
+            else {
+                alert("Has de tenir 500 Pustovyis!");
+            }
+        }
+
+        //AGENCIA
+        //PREU 5000€ INCREMENTA PREU PILOTA x2
+        function BuyHeurtel() {
+            if (pustovyis >= 500) {
+                if (heurtels < 1) {
+                    if (walletEuros >= PREUHEURTEL) {
+                        walletEuros = walletEuros - PREUHEURTEL;
+                        heurtels++;
+                        clearInterval(timer);
+                        timer = setInterval(ActualizarPustovyi, 1000 * interval);
+                        document.getElementById("heurtel").innerHTML = heurtels;
+                        document.getElementById("wallet").innerHTML = walletEuros.toFixed(2);
+                    }
+                    else {
+                        alert("Et falten monedes. Preu: " + PREUHEURTEL + "€");
+                    }
+                }
+                else {
+                    alert("Només en pots tenir un!");
+                }
+            }
+            else {
+                alert("Has de tenir 500 Pustovyis!");
+            }
+        }
+
+        //COMPRESION
+        //PREU 1000€ INCREMENTA els discos incrementen capacitat per dos. per tant podem multiplicar per dos els discos i actualitzar els que tinguem comprats i els nous que comprem
+        function BuyHanga() {
+            if (pustovyis >= 500) {
+                if (hangas < 1) {
+                    if (walletEuros >= PREUHANGA) {
+                        walletEuros = walletEuros - PREUHANGA;
+                        hangas++;
+                        clearInterval(timer);
+                        timer = setInterval(ActualizarPustovyi, 1000 * interval);
+                        document.getElementById("hanga").innerHTML = hangas - 1;
+                        document.getElementById("wallet").innerHTML = walletEuros.toFixed(2);
+                    }
+                    else {
+                        alert("Et falten monedes. Preu: " + PREUHANGA + "€");
+                    }
+                }
+                else {
+                    alert("Només en pots tenir un!");
+                }
+            }
+            else {
+                alert("Has de tenir 500 Pustovyis!");
+            }
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <p>TEXT</p>
+    <textarea id ="text" rows="4" cols="50"></textarea>
+    <p>DESPLAÇAMENT NEGATIU</p>
+    <textarea id ="desplazament" rows="1" cols="1">0</textarea>
+    <p>CODIFICAT</p>
+    <textarea id ="text_convertit" rows="4" cols="50"></textarea>
+
+    <script>
+        var text = document.getElementById("text");
+        var lletres = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+        var num = (parseInt(document.getElementById("desplazament").value))%(lletres.length);
+        
+        var lletra;
+        var resultat="";
+        var lletranova;
+
+        function convertir(){
+            num = (parseInt(document.getElementById("desplazament").value))%(lletres.length);
+            resultat="";
+
+            for(var i=0;i<text.value.length;i++){
+                lletra=(text.value.charCodeAt(i))-65; //Càlcul posició de la lletra actual
+                lletranova=(lletra-num+lletres.length)%(lletres.length);//Càlcul posició lletra codificada
+                resultat=resultat+lletres[lletranova];//Afegir lletra al resultat
+            }
+            document.getElementById("text_convertit").innerHTML=resultat;          
+        }
+
+        text.addEventListener("keyup",convertir);
+        desplazament.addEventListener("keyup",convertir);
+    </script>    
+</body>
+</html>

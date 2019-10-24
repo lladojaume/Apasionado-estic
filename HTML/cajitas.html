@@ -1,0 +1,106 @@
+<html>
+<head>
+    <style>
+    .cajas{
+        width:50px;
+        height:50px;
+        display: inline-block;
+        background-color: rgb(11, 8, 185);
+        color: rgb(255, 255, 255);
+        font-size: 30px;
+        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        cursor: pointer;
+        text-align: center;        
+        border-radius: 20px;        
+        padding: 10px;
+        margin: 10px;        
+    }
+
+    .cajas:hover{
+        background-color: rgb(50, 113, 207);        
+    }
+
+    .title{
+        font-size: 50px;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        text-align: center;
+    }
+    
+    .timer{
+        font-size: 50px;        
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+
+    <div class = "title">CLICKABLE 1-100</div>
+    
+    
+<div id="container">
+</div>
+<div class="timer">
+        <span id="countdown"></span>
+</div>
+
+<script>
+var contenedor=document.getElementById("container");
+var lista = new Array();
+for(var i=1;i<=100;i++){
+    lista.push(i);
+}
+for(var i=1;i<=lista.length;i++){
+    var para = document.createElement("div");
+    para.className="cajas";
+
+    var numRandom =Math.floor((Math.random()*lista.length))+1;
+    while(lista[numRandom-1] == 0){
+        numRandom =Math.floor((Math.random()*lista.length))+1;
+    }
+    lista[numRandom-1]=0;
+    para.innerText=numRandom;
+    contenedor.appendChild(para);
+}
+
+var num=1;
+
+for(var d of document.getElementsByClassName("cajas")){
+    d.addEventListener("click",AdivinarNumero);
+}
+
+setTimeout(Remove,240000);
+
+function AdivinarNumero(){
+    if(this.innerText == num){
+        this.style.backgroundColor='green';
+        num++;
+    }
+    else{
+        if(this.style.backgroundColor!="green"){
+            this.style.backgroundColor='red';
+        Remove();
+        totalTime = 0;
+        }        
+    }
+}
+
+function Remove(){
+    for(var d of document.getElementsByClassName("cajas")){
+        d.removeEventListener("click",AdivinarNumero);
+    }
+}
+
+window.onload = updateClock;
+    var totalTime = 240;
+    function updateClock() {
+        document.getElementById('countdown').innerHTML = totalTime;
+        if(totalTime==0){
+            alert('Has perdut');
+        }else{
+            totalTime-=1;
+            setTimeout("updateClock()",1000);
+        }
+    }
+</script>
+</body>
+</html>

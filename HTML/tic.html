@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+            .cajas{
+                width:10px;
+                height:10px;
+                display: inline-block;
+                background-color: rgb(11, 8, 185);
+                color: rgb(255, 255, 255);
+                font-size: 30px;
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                cursor: pointer;
+                text-align: center;        
+                border-radius: 20px;        
+                padding: 10px;
+                margin: 10px;        
+            }
+        
+            .cajas:hover{
+                background-color: rgb(50, 113, 207);        
+            }
+        
+            .title{
+                font-size: 50px;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                text-align: center;
+            }
+            
+            .timer{
+                font-size: 50px;        
+                text-align: center;
+            }
+        </style>
+</head>
+
+<body>
+    <button id="start">Empieza</button>
+    <button id="stop">Para</button>
+    <p id="res">Holi</p>
+    <div id="segons"></div>
+    <div id="minuts"></div>
+    <div id="hores"></div>
+
+
+
+<script>
+    let cont=0;
+    let timer;
+    var count=0;
+    document.getElementById("start").addEventListener("click", crear);    
+    /*document.getElementById("stop").addEventListener("click", stop);*/
+
+    var segons=document.getElementById("segons");
+    
+    timer=setInterval(crear,1000);                
+    
+    function crear(){
+        if(count<5){
+        var segon=document.createElement("div");
+        segon.className="cajas";
+        segons.appendChild(segon);
+        count++;
+        }
+        else{
+            clearInterval(timer);
+            count=0;
+        }        
+    }   
+
+    
+   /* function stop(){
+        clearInterval(timer);        
+    }
+    
+    function tic(){
+        document.getElementById("res").innerHTML=cont;
+        cont++;
+    }*/
+</script>
+</body>
+</html>
