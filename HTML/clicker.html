@@ -258,8 +258,13 @@
                 <p class="price"><span id="PREUHANGA"></span>€</p>
 
             </div>
+
         </div>
     </div>
+
+
+    <!-- campazzo,llull, tavares, carroll, laprovittola, rudy, taylor, causeur, deck, randolph, mickey, thompkins, reyes -->
+
 
 
 
@@ -284,10 +289,10 @@
 
 
 
-
+        let productivitat=1;
         let interval = 10;//Cada 10 segons el pustovyi fa una pilota
         let ballNum = 0;
-        let walletEuros = 0;
+        let walletEuros = 10000000;
         let pustovyis = 0;
         let smitss = 1;
         let capacitatRibas = 10000000;//Capacitat ribas(disc dur)
@@ -380,13 +385,13 @@
 
         function ActualizarPustovyi() {
             if (ballNum < 10000000 * ribass * hangas) {
-                ballNum = ballNum + pustovyis;
+                ballNum = ballNum + pustovyis*productivitat;
                 document.getElementById("balls").innerHTML = ballNum;
             }
-            else {
-                clearInterval(timer);
-                timer = setInterval(ActualizarPustovyi, 1000 * interval);
-            }
+            // else {
+            //     clearInterval(timer);
+            //     timer = setInterval(ActualizarPustovyi, 1000 * interval);
+            // }
         }
 
         timer = setInterval(ActualizarPustovyi, 1000 * interval);
@@ -404,6 +409,8 @@
             if (walletEuros >= PREUPUSTOVYI && pustovyis < 50 * smitss) {
                 walletEuros = walletEuros - PREUPUSTOVYI;
                 pustovyis++;
+
+
                 document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
                 document.getElementById("pustovyi").innerHTML = Intl.NumberFormat("de-DE").format(pustovyis) + "/" + 50 * smitss;
             }
@@ -446,9 +453,10 @@
                 if (walletEuros >= PREUORIOLA) {
                     walletEuros = walletEuros - PREUORIOLA;
                     oriolas++;
-                    interval = interval / 10;
-                    clearInterval(timer);
-                    timer = setInterval(ActualizarPustovyi, 1000 * interval);
+                    productivitat = productivitat * 10;
+                    // interval = interval / 10;                    
+                    // clearInterval(timer);
+                    // timer = setInterval(ActualizarPustovyi, 1000 * interval);
                     document.getElementById("oriola").innerHTML = Intl.NumberFormat("de-DE").format(oriolas);
                     document.getElementById("wallet").innerHTML = (walletEuros.toFixed(2));
                 }
@@ -465,10 +473,11 @@
             if (tomics < 1) {
                 if (walletEuros >= PREUTOMIC) {
                     walletEuros = walletEuros - PREUTOMIC;
-                    tomics++;
-                    interval = interval / 2;
-                    clearInterval(timer);
-                    timer = setInterval(ActualizarPustovyi, 1000 * interval);
+                    tomics++;                    
+                    productivitat=productivitat*2;
+                    // interval = interval / 2;
+                    // clearInterval(timer);
+                    // timer = setInterval(ActualizarPustovyi, 1000 * interval);
                     document.getElementById("tomic").innerHTML = Intl.NumberFormat("de-DE").format(tomics);
                     document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
                 }
@@ -488,9 +497,10 @@
                     walletEuros = walletEuros - (pustovyis * preuPangos);
                     pangoss++;
                     preuPangos = preuPangos * 2;
-                    interval = interval / 10;
-                    clearInterval(timer);
-                    timer = setInterval(ActualizarPustovyi, 1000 * interval);
+                    productivitat=productivitat*10;
+                    // interval = interval / 10;
+                    // clearInterval(timer);
+                    // timer = setInterval(ActualizarPustovyi, 1000 * interval);
                     document.getElementById("pangos").innerHTML = Intl.NumberFormat("de-DE").format(pangoss);
                     document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
                 }
@@ -510,9 +520,10 @@
                     if (walletEuros >= PREUABRINES) {
                         walletEuros = walletEuros - PREUABRINES;
                         abriness++;
-                        interval = interval / 4;
-                        clearInterval(timer);
-                        timer = setInterval(ActualizarPustovyi, 1000 * interval);
+                        productivitat=productivitat*4;
+                        // interval = interval / 4;
+                        // clearInterval(timer);
+                        // timer = setInterval(ActualizarPustovyi, 1000 * interval);
                         document.getElementById("abrines").innerHTML = Intl.NumberFormat("de-DE").format(abriness);
                         document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
                     }
@@ -536,9 +547,10 @@
                     if (walletEuros >= PREUKURIC) {
                         walletEuros = walletEuros - PREUKURIC;
                         kurics++;
-                        interval = interval / 50;
-                        clearInterval(timer);
-                        timer = setInterval(ActualizarPustovyi, 1000 * interval);
+                        productivitat=productivitat*50;
+                        // interval = interval / 50;
+                        // clearInterval(timer);
+                        // timer = setInterval(ActualizarPustovyi, 1000 * interval);
                         document.getElementById("kuric").innerHTML = Intl.NumberFormat("de-DE").format(kurics);
                         document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
                     }
@@ -563,8 +575,8 @@
                     if (walletEuros >= PREUDELANEY) {
                         walletEuros = walletEuros - PREUDELANEY;
                         delaneys++;
-                        clearInterval(timer);
-                        timer = setInterval(ActualizarPustovyi, 1000 * interval);
+                        // clearInterval(timer);
+                        // timer = setInterval(ActualizarPustovyi, 1000 * interval);
                         document.getElementById("delaney").innerHTML = Intl.NumberFormat("de-DE").format(delaneys);
                         document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
                     }
@@ -590,8 +602,8 @@
                     if (walletEuros >= PREUCLAVER) {
                         walletEuros = walletEuros - PREUCLAVER;
                         clavers++;
-                        clearInterval(timer);
-                        timer = setInterval(ActualizarPustovyi, 1000 * interval);
+                        // clearInterval(timer);
+                        // timer = setInterval(ActualizarPustovyi, 1000 * interval);
                         document.getElementById("claver").innerHTML = Intl.NumberFormat("de-DE").format(clavers);
                         document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
                     }
@@ -616,8 +628,8 @@
                     if (walletEuros >= PREUHEURTEL) {
                         walletEuros = walletEuros - PREUHEURTEL;
                         heurtels++;
-                        clearInterval(timer);
-                        timer = setInterval(ActualizarPustovyi, 1000 * interval);
+                        // clearInterval(timer);
+                        // timer = setInterval(ActualizarPustovyi, 1000 * interval);
                         document.getElementById("heurtel").innerHTML = Intl.NumberFormat("de-DE").format(heurtels);
                         document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
                     }
@@ -642,8 +654,8 @@
                     if (walletEuros >= PREUHANGA) {
                         walletEuros = walletEuros - PREUHANGA;
                         hangas++;
-                        clearInterval(timer);
-                        timer = setInterval(ActualizarPustovyi, 1000 * interval);
+                        // clearInterval(timer);
+                        // timer = setInterval(ActualizarPustovyi, 1000 * interval);
                         document.getElementById("hanga").innerHTML = Intl.NumberFormat("de-DE").format(hangas - 1);
                         document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
                     }
@@ -659,6 +671,15 @@
                 alert("Has de tenir 500 Pustovyis!");
             }
         }
+
+        //VIRUS CLOUD(DAVIES)
+        //EMMAGATZEMATGE INFINIT
+
+
+        //INVESTIGAR IA(HIGGINS)
+        //DUPLICA PUNTS CADA 10 SEGONS
+
+
 
     </script>
 </body>
