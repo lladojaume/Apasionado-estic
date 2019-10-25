@@ -294,6 +294,7 @@
         let ballNum = 0;
         let walletEuros = 10000000;
         let pustovyis = 0;
+        let capacitatSmits=50;
         let smitss = 1;
         let capacitatRibas = 10000000;//Capacitat ribas(disc dur)
         let ribass = 1;
@@ -372,10 +373,10 @@
 
 
         function IncrementBall() {
-            if (ballNum > 10000000 * ribass) {
+            if (ballNum > capacitatRibas * ribass) {
                 alert("Has de comprar més Pau Ribas");
-                clearInterval(timer);
-                timer = setInterval(ActualizarPustovyi, 1000 * interval);
+                // clearInterval(timer);
+                // timer = setInterval(ActualizarPustovyi, 1000 * interval);
 
             } else {
                 ballNum++;
@@ -384,17 +385,19 @@
         }
 
         function ActualizarPustovyi() {
-            if (ballNum < 10000000 * ribass * hangas) {
+            if (ballNum < capacitatRibas * ribass * hangas) {
                 ballNum = ballNum + pustovyis*productivitat;
                 document.getElementById("balls").innerHTML = ballNum;
             }
-            // else {
+            else {
+                alert("Has de comprar més Pau Ribas");
             //     clearInterval(timer);
             //     timer = setInterval(ActualizarPustovyi, 1000 * interval);
-            // }
+            }
         }
 
         timer = setInterval(ActualizarPustovyi, 1000 * interval);
+
 
         function SellBall() {
             if (ballNum > 0) {
@@ -406,7 +409,7 @@
         }
         //minion
         function BuyPustovy() {
-            if (walletEuros >= PREUPUSTOVYI && pustovyis < 50 * smitss) {
+            if (walletEuros >= PREUPUSTOVYI && pustovyis < capacitatSmits * smitss) {
                 walletEuros = walletEuros - PREUPUSTOVYI;
                 pustovyis++;
 
@@ -428,7 +431,7 @@
                 smitss++;
                 document.getElementById("smits").innerHTML = Intl.NumberFormat("de-DE").format(smitss - 1);
                 document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
-                document.getElementById("pustovyi").innerHTML = Intl.NumberFormat("de-DE").format(pustovyis) + "/" + 50 * smitss;
+                document.getElementById("pustovyi").innerHTML = Intl.NumberFormat("de-DE").format(pustovyis) + "/" + capacitatSmits * smitss;
 
             }
             else {
@@ -678,7 +681,6 @@
 
         //INVESTIGAR IA(HIGGINS)
         //DUPLICA PUNTS CADA 10 SEGONS
-
 
 
     </script>
