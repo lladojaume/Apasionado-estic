@@ -15,7 +15,6 @@
         font-size: 50px;
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         color: white;
-        opacity: 0.9;
     }
 
     #monedetes {
@@ -119,11 +118,24 @@
     .tooltip:hover .tooltiptext {
         visibility: visible;
     }
+
+    #alerta {
+        height: 100px;
+        width: 2100px;
+        position: static;
+        justify-content: space-around;
+        background-color: black;
+        font-size: px;
+        text-align: center;
+    }
 </style>
 
 <body>
-    <div></div>
+    <div id="alerta" style="display:none;">
+        <p><a id="alert"></a></p>
+    </div>
     <div id="quadregran">
+
         <div id="monedetes">
             <img src="logo.jpg"></img>
             <p style="margin-top: 5px;">Moneder: <a id="wallet">0</a>€</p>
@@ -270,8 +282,8 @@
 
 
     <script>
-           
-        
+
+
         var btnBallCreator = document.getElementById("ballcreator");
         var btnBallSeller = document.getElementById("ballseller");
         var btnBuyPustovy = document.getElementById("pustovyibuy");
@@ -291,12 +303,12 @@
 
 
 
-        let productivitat=1;
+        let productivitat = 1;
         let interval = 10;//Cada 10 segons el pustovyi fa una pilota
         let ballNum = 0;
         let walletEuros = 0;
         let pustovyis = 0;
-        let capacitatSmits=50;
+        let capacitatSmits = 50;
         let smitss = 1;
         let capacitatRibas = 10000000;//Capacitat ribas(disc dur)
         let ribass = 1;
@@ -333,7 +345,7 @@
         document.getElementById("PREURIBAS").innerText = PREURIBAS;
         document.getElementById("PREUORIOLA").innerText = PREUORIOLA;
         document.getElementById("PREUTOMIC").innerText = PREUTOMIC;
-        document.getElementById("preuPangos").innerText = preuPangos;
+        document.getElementById("preuPangos").innerText = preuPangos*pustovyis;
         document.getElementById("PREUABRINES").innerText = PREUABRINES;
         document.getElementById("PREUKURIC").innerText = PREUKURIC;
         document.getElementById("PREUDELANEY").innerText = PREUDELANEY;
@@ -367,16 +379,26 @@
         btnBuyHanga.addEventListener("click", BuyHanga);
 
 
+        //FUNCIONS ALERTES
+        function TempsEspera() {
+            alerta.style.display = 'none';            
+        }
 
+        function AvisarError(error) {
+            document.getElementById("alerta").innerText = error;
+            alerta.style.display = 'block';
+            espera = setTimeout(TempsEspera, 3000); 
+                      
+        }
 
-
-
-
+        function ActualitzarMoneder(){
+            document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
+        }
 
 
         function IncrementBall() {
             if (ballNum > capacitatRibas * ribass) {
-                alert("Has de comprar més Pau Ribas");
+                AvisarError("Has de comprar més Pau Ribas");
                 // clearInterval(timer);
                 // timer = setInterval(ActualizarPustovyi, 1000 * interval);
 
@@ -388,13 +410,13 @@
 
         function ActualizarPustovyi() {
             if (ballNum < capacitatRibas * ribass * hangas) {
-                ballNum = ballNum + pustovyis*productivitat;
+                ballNum = ballNum + pustovyis * productivitat;
                 document.getElementById("balls").innerHTML = ballNum;
             }
             else {
-                alert("Has de comprar més Pau Ribas");
-            //     clearInterval(timer);
-            //     timer = setInterval(ActualizarPustovyi, 1000 * interval);
+                AvisarError("Has de comprar més Pau Ribas");
+                //     clearInterval(timer);
+                //     timer = setInterval(ActualizarPustovyi, 1000 * interval);
             }
         }
 
@@ -406,7 +428,7 @@
                 walletEuros = walletEuros + (ballNum * 0.10 * (Math.pow(2, doblecodigo)));
                 ballNum = 0;
                 document.getElementById("balls").innerHTML = Intl.NumberFormat("de-DE").format(ballNum);
-                document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
+                ActualitzarMoneder();
             }
         }
         //minion
@@ -414,30 +436,32 @@
             if (walletEuros >= PREUPUSTOVYI && pustovyis < capacitatSmits * smitss) {
                 walletEuros = walletEuros - PREUPUSTOVYI;
                 pustovyis++;
-
-
-                document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
                 document.getElementById("pustovyi").innerHTML = Intl.NumberFormat("de-DE").format(pustovyis) + "/" + 50 * smitss;
+                document.getElementById("preuPangos").innerHTML = preuPangos*pustovyis;
+
+                ActualitzarMoneder();
             }
             else if (pustovyis == 50 * smitss) {
-                alert("Has de comprar més Smits per poder comprar més Pustovyis")
+                AvisarError("Has de comprar més Smits per poder comprar més Pustovyis");
 
             } else {
-                alert("Et falten monedes. Preu: " + PREUPUSTOVYI + "€");
+                AvisarError("Et falten monedes. Preu: " + PREUPUSTOVYI + "€");
             }
         }
+
+
         //oficina
         function BuySmits() {
             if (walletEuros >= PREUSMITS) {
                 walletEuros = walletEuros - PREUSMITS;
                 smitss++;
                 document.getElementById("smits").innerHTML = Intl.NumberFormat("de-DE").format(smitss - 1);
-                document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
+                ActualitzarMoneder();
                 document.getElementById("pustovyi").innerHTML = Intl.NumberFormat("de-DE").format(pustovyis) + "/" + capacitatSmits * smitss;
 
             }
             else {
-                alert("Et falten monedes. Preu " + PREUSMITS + "€");
+                AvisarError("Et falten monedes. Preu " + PREUSMITS + "€");
             }
         }
         //disco duro
@@ -446,10 +470,10 @@
                 walletEuros = walletEuros - PREURIBAS;
                 ribass++;
                 document.getElementById("ribas").innerHTML = Intl.NumberFormat("de-DE").format(ribass - 1);
-                document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
+                ActualitzarMoneder();
             }
             else {
-                alert("Et falten monedes. Preu: " + PREURIBAS + "€");
+                AvisarError("Et falten monedes. Preu: " + PREURIBAS + "€");
             }
         }
         //formador
@@ -463,14 +487,14 @@
                     // clearInterval(timer);
                     // timer = setInterval(ActualizarPustovyi, 1000 * interval);
                     document.getElementById("oriola").innerHTML = Intl.NumberFormat("de-DE").format(oriolas);
-                    document.getElementById("wallet").innerHTML = (walletEuros.toFixed(2));
+                    ActualitzarMoneder();
                 }
                 else {
-                    alert("Et falten monedes. Preu: " + PREUORIOLA + "€");
+                    AvisarError("Et falten monedes. Preu: " + PREUORIOLA + "€");
                 }
             }
             else {
-                alert("Només en pots tenir un!");
+                AvisarError("Només en pots tenir un!");
             }
         }
         //maquina cafe
@@ -478,20 +502,20 @@
             if (tomics < 1) {
                 if (walletEuros >= PREUTOMIC) {
                     walletEuros = walletEuros - PREUTOMIC;
-                    tomics++;                    
-                    productivitat=productivitat*2;
+                    tomics++;
+                    productivitat = productivitat * 2;
                     // interval = interval / 2;
                     // clearInterval(timer);
                     // timer = setInterval(ActualizarPustovyi, 1000 * interval);
                     document.getElementById("tomic").innerHTML = Intl.NumberFormat("de-DE").format(tomics);
-                    document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
+                    ActualitzarMoneder();
                 }
                 else {
-                    alert("Et falten monedes. Preu: " + PREUTOMIC + "€");
+                    AvisarError("Et falten monedes. Preu: " + PREUTOMIC + "€");
                 }
             }
             else {
-                alert("Només en pots tenir un!");
+                AvisarError("Només en pots tenir un!");
             }
         }
 
@@ -502,19 +526,19 @@
                     walletEuros = walletEuros - (pustovyis * preuPangos);
                     pangoss++;
                     preuPangos = preuPangos * 2;
-                    productivitat=productivitat*10;
+                    productivitat = productivitat * 10;
                     // interval = interval / 10;
                     // clearInterval(timer);
                     // timer = setInterval(ActualizarPustovyi, 1000 * interval);
                     document.getElementById("pangos").innerHTML = Intl.NumberFormat("de-DE").format(pangoss);
-                    document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
+                    ActualitzarMoneder();
                 }
                 else {
-                    alert("Et falten monedes. Preu: " + pustovyis * preuPangos + "€");
+                    AvisarError("Et falten monedes. Preu: " + pustovyis * preuPangos + "€");
                 }
             }
             else {
-                alert("No tens cap Pustovyi per millorar.")
+                AvisarError("No tens cap Pustovyi per millorar.")
             }
         }
 
@@ -525,23 +549,23 @@
                     if (walletEuros >= PREUABRINES) {
                         walletEuros = walletEuros - PREUABRINES;
                         abriness++;
-                        productivitat=productivitat*4;
+                        productivitat = productivitat * 4;
                         // interval = interval / 4;
                         // clearInterval(timer);
                         // timer = setInterval(ActualizarPustovyi, 1000 * interval);
                         document.getElementById("abrines").innerHTML = Intl.NumberFormat("de-DE").format(abriness);
-                        document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
+                        ActualitzarMoneder();
                     }
                     else {
-                        alert("Et falten monedes. Preu: " + PREUABRINES + "€");
+                        AvisarError("Et falten monedes. Preu: " + PREUABRINES + "€");
                     }
                 }
                 else {
-                    alert("Només en pots tenir un!");
+                    AvisarError("Només en pots tenir un!");
                 }
             }
             else {
-                alert("Has de tenir 500 Pustovyis!");
+                AvisarError("Has de tenir 500 Pustovyis!");
             }
         }
 
@@ -552,23 +576,23 @@
                     if (walletEuros >= PREUKURIC) {
                         walletEuros = walletEuros - PREUKURIC;
                         kurics++;
-                        productivitat=productivitat*50;
+                        productivitat = productivitat * 50;
                         // interval = interval / 50;
                         // clearInterval(timer);
                         // timer = setInterval(ActualizarPustovyi, 1000 * interval);
                         document.getElementById("kuric").innerHTML = Intl.NumberFormat("de-DE").format(kurics);
-                        document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
+                        ActualitzarMoneder();
                     }
                     else {
-                        alert("Et falten monedes. Preu: " + PREUKURIC + "€");
+                        AvisarError("Et falten monedes. Preu: " + PREUKURIC + "€");
                     }
                 }
                 else {
-                    alert("Només en pots tenir un!");
+                    AvisarError("Només en pots tenir un!");
                 }
             }
             else {
-                alert("Has de tenir 500 Pustovyis!");
+                AvisarError("Has de tenir 500 Pustovyis!");
             }
         }
 
@@ -583,18 +607,18 @@
                         // clearInterval(timer);
                         // timer = setInterval(ActualizarPustovyi, 1000 * interval);
                         document.getElementById("delaney").innerHTML = Intl.NumberFormat("de-DE").format(delaneys);
-                        document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
+                        ActualitzarMoneder();
                     }
                     else {
-                        alert("Et falten monedes. Preu: " + PREUDELANEY + "€");
+                        AvisarError("Et falten monedes. Preu: " + PREUDELANEY + "€");
                     }
                 }
                 else {
-                    alert("Només en pots tenir un!");
+                    AvisarError("Només en pots tenir un!");
                 }
             }
             else {
-                alert("Has de tenir 500 Pustovyis!");
+                AvisarError("Has de tenir 500 Pustovyis!");
             }
         }
 
@@ -610,18 +634,18 @@
                         // clearInterval(timer);
                         // timer = setInterval(ActualizarPustovyi, 1000 * interval);
                         document.getElementById("claver").innerHTML = Intl.NumberFormat("de-DE").format(clavers);
-                        document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
+                        ActualitzarMoneder();
                     }
                     else {
-                        alert("Et falten monedes. Preu: " + PREUCLAVER + "€");
+                        AvisarError("Et falten monedes. Preu: " + PREUCLAVER + "€");
                     }
                 }
                 else {
-                    alert("Només en pots tenir un!");
+                    AvisarError("Només en pots tenir un!");
                 }
             }
             else {
-                alert("Has de tenir 500 Pustovyis!");
+                AvisarError("Has de tenir 500 Pustovyis!");
             }
         }
 
@@ -636,18 +660,18 @@
                         // clearInterval(timer);
                         // timer = setInterval(ActualizarPustovyi, 1000 * interval);
                         document.getElementById("heurtel").innerHTML = Intl.NumberFormat("de-DE").format(heurtels);
-                        document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
+                        ActualitzarMoneder();
                     }
                     else {
-                        alert("Et falten monedes. Preu: " + PREUHEURTEL + "€");
+                        AvisarError("Et falten monedes. Preu: " + PREUHEURTEL + "€");
                     }
                 }
                 else {
-                    alert("Només en pots tenir un!");
+                    AvisarError("Només en pots tenir un!");
                 }
             }
             else {
-                alert("Has de tenir 500 Pustovyis!");
+                AvisarError("Has de tenir 500 Pustovyis!");
             }
         }
 
@@ -662,18 +686,18 @@
                         // clearInterval(timer);
                         // timer = setInterval(ActualizarPustovyi, 1000 * interval);
                         document.getElementById("hanga").innerHTML = Intl.NumberFormat("de-DE").format(hangas - 1);
-                        document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
+                        ActualitzarMoneder();
                     }
                     else {
-                        alert("Et falten monedes. Preu: " + PREUHANGA + "€");
+                        AvisarError("Et falten monedes. Preu: " + PREUHANGA + "€");
                     }
                 }
                 else {
-                    alert("Només en pots tenir un!");
+                    AvisarError("Només en pots tenir un!");
                 }
             }
             else {
-                alert("Has de tenir 500 Pustovyis!");
+                AvisarError("Has de tenir 500 Pustovyis!");
             }
         }
 
@@ -682,7 +706,7 @@
 
 
         //INVESTIGAR IA(HIGGINS)
-        //DUPLICA PUNTS CADA 10 SEGONS
+        //DUPLICA PRODUCTIVITAT(DUPLICA PUNTS CADA 10 SEGONS)
 
 
     </script>
