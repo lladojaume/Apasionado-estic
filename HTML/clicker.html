@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>BARÇA CLICKER</title>
 
 </head>
 <style>
@@ -83,6 +83,55 @@
         margin: 30px;
     }
 
+    #quadrepustovyi {}
+
+    #quadresmits {}
+
+    #quadreribas {}
+
+    #quadreoriola {   
+
+
+    }
+
+    #quadretomic {
+
+
+    }
+
+    #quadrepangos {
+
+    }
+
+    #quadreabrines {
+        display: none;
+    }
+
+    #quadrekuric {
+        display: none;
+    }
+
+    #quadredelaney {
+        display: none;
+
+
+    }
+
+    #quadreclaver {
+        display: none;
+    }
+
+    #quadreheurtel {
+        display: none;
+    }
+
+
+    #quadrehanga {
+        display: none;
+    }
+
+
+
     #jugadors {
         border: 2px solid black;
         width: 50%;
@@ -122,7 +171,7 @@
     #alerta {
         height: 100px;
         width: 2100px;
-        position:absolute;
+        position: absolute;
         justify-content: space-around;
         background-color: black;
         font-size: px;
@@ -131,7 +180,7 @@
 </style>
 
 <body>
-   
+
     <div id="quadregran">
 
         <div id="monedetes">
@@ -146,7 +195,7 @@
         </div>
 
         <div id="jugadors">
-            <div class="quadre">
+            <div class="quadre" id="quadrepustovyi">
                 <button id="pustovyibuy"><img class="player" src="pustovyi.jpg"></img></button>
                 <div class="tooltip">
                     <p>Artem Pustovyi: <a id="pustovyi">0/50</a></p>
@@ -155,7 +204,7 @@
                 <p class="price"><span id="PREUPUSTOVYI"></span>€</p>
             </div>
             <br>
-            <div class="quadre">
+            <div class="quadre" id="quadresmits">
 
                 <button id="smitsbuy"><img class="player" src="smits.jpg"></img></button>
                 <div class="tooltip">
@@ -165,7 +214,7 @@
                 <p class="price"><span id="PREUSMITS"></span>€</p>
             </div>
             <br>
-            <div class="quadre">
+            <div class="quadre" id="quadreribas">
                 <button id="ribasbuy"><img class="player" src="ribas.jpg"></img></button>
                 <div class="tooltip">
                     <p>Pau Ribas: <a id="ribas">0</a></p>
@@ -174,7 +223,7 @@
                 <p class="price"><span id="PREURIBAS"></span>€</p>
             </div>
             <br>
-            <div class="quadre">
+            <div class="quadre" id="quadreoriola">
                 <button id="oriolabuy"><img class="player" src="oriola.jpg"></img></button>
                 <div class="tooltip">
                     <p>Pierre Oriola: <a id="oriola">0</a>/1</p>
@@ -183,7 +232,7 @@
                 <p class="price"><span id="PREUORIOLA"></span>€</p>
             </div>
             <br>
-            <div class="quadre">
+            <div class="quadre" id="quadretomic">
                 <button id="tomicbuy"><img class="player" src="tomic.jpg"></img></button>
                 <div class="tooltip">
                     <p>Ante Tomic: <a id="tomic">0</a>/1</p>
@@ -194,7 +243,7 @@
             </div>
 
             <br>
-            <div class="quadre">
+            <div class="quadre" id="quadrepangos">
                 <button id="pangosbuy"><img class="player" src="pangos.jpg"></img></button>
                 <div class="tooltip">
                     <p>Kevin Pangos: <a id="pangos">0</a></p>
@@ -204,7 +253,7 @@
             </div>
 
             <br>
-            <div class="quadre">
+            <div class="quadre" id="quadreabrines">
                 <button id="abrinesbuy"><img class="player" src="abrines.jpg"></img></button>
                 <div class="tooltip">
                     <p>Alex Abrines: <a id="abrines">0</a>/1</p>
@@ -214,7 +263,7 @@
             </div>
 
             <br>
-            <div class="quadre">
+            <div class="quadre" id="quadrekuric">
                 <button id="kuricbuy"><img class="player" src="kuric.jpg"></img></button>
                 <div class="tooltip">
                     <p>Kyle Kuric: <a id="kuric">0</a>/1</p>
@@ -224,7 +273,7 @@
 
             </div>
             <br>
-            <div class="quadre">
+            <div class="quadre" id="quadredelaney">
                 <button id="delaneybuy"><img class="player" src="delaney.jpg"></img></button>
                 <div class="tooltip">
                     <p>Malcom Delaney: <a id="delaney">0</a>/1</p>
@@ -234,7 +283,7 @@
 
             </div>
             <br>
-            <div class="quadre">
+            <div class="quadre" id="quadreclaver">
                 <button id="claverbuy"><img class="player" src="claver.jpg"></img></button>
                 <div class="tooltip">
                     <p>Victor Claver: <a id="claver">0</a>/1</p>
@@ -245,7 +294,7 @@
             </div>
             <br>
 
-            <div class="quadre">
+            <div class="quadre" id="quadreheurtel">
                 <button id="heurtelbuy"><img class="player" src="heurtel.jpg"></img></button>
                 <div class="tooltip">
                     <p>Thomas Heurtel: <a id="heurtel">0</a>/1</p>
@@ -255,7 +304,7 @@
 
             </div>
             <br>
-            <div class="quadre">
+            <div class="quadre" id="quadrehanga">
                 <button id="hangabuy"><img class="player" src="hanga.jpg"></img></button>
                 <div class="tooltip">
                     <p>Adam Hanga: <a id="hanga">0</a>/1</p>
@@ -267,7 +316,7 @@
 
         </div>
     </div>
-     <div id="alerta" style="display:none;">
+    <div id="alerta" style="display:none;">
         <p><a id="alert"></a></p>
     </div>
 
@@ -341,7 +390,7 @@
         document.getElementById("PREURIBAS").innerText = PREURIBAS;
         document.getElementById("PREUORIOLA").innerText = PREUORIOLA;
         document.getElementById("PREUTOMIC").innerText = PREUTOMIC;
-        document.getElementById("preuPangos").innerText = preuPangos*pustovyis;
+        document.getElementById("preuPangos").innerText = preuPangos * pustovyis;
         document.getElementById("PREUABRINES").innerText = PREUABRINES;
         document.getElementById("PREUKURIC").innerText = PREUKURIC;
         document.getElementById("PREUDELANEY").innerText = PREUDELANEY;
@@ -377,17 +426,17 @@
 
         //FUNCIONS ALERTES
         function TempsEspera() {
-            alerta.style.display = 'none';            
+            alerta.style.display = 'none';
         }
 
         function AvisarError(error) {
             document.getElementById("alerta").innerText = error;
             alerta.style.display = 'block';
-            espera = setTimeout(TempsEspera, 3000); 
-                      
+            espera = setTimeout(TempsEspera, 3000);
+
         }
 
-        function ActualitzarMoneder(){
+        function ActualitzarMoneder() {
             document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
         }
 
@@ -401,6 +450,7 @@
             } else {
                 ballNum++;
                 document.getElementById("balls").innerHTML = Intl.NumberFormat("de-DE").format(ballNum);
+
             }
         }
 
@@ -432,8 +482,17 @@
             if (walletEuros >= PREUPUSTOVYI && pustovyis < capacitatSmits * smitss) {
                 walletEuros = walletEuros - PREUPUSTOVYI;
                 pustovyis++;
+                if (pustovyis == 500) {
+                    // document.getElementById("jugadors").style.overflowY="scroll";                    
+                    document.getElementById("quadreabrines").style.display = "flex";
+                    document.getElementById("quadrekuric").style.display = "flex";
+                    document.getElementById("quadredelaney").style.display = "flex";
+                    document.getElementById("quadreclaver").style.display = "flex";
+                    document.getElementById("quadreheurtel").style.display = "flex";
+                    document.getElementById("quadrehanga").style.display = "flex";
+                }
                 document.getElementById("pustovyi").innerHTML = Intl.NumberFormat("de-DE").format(pustovyis) + "/" + 50 * smitss;
-                document.getElementById("preuPangos").innerHTML = preuPangos*pustovyis;
+                document.getElementById("preuPangos").innerHTML = preuPangos * pustovyis;
 
                 ActualitzarMoneder();
             }
@@ -538,9 +597,13 @@
             }
         }
 
+
+
+
         //SCRUM
         function BuyAbrines() {
             if (pustovyis >= 500) {
+
                 if (abriness < 1) {
                     if (walletEuros >= PREUABRINES) {
                         walletEuros = walletEuros - PREUABRINES;
