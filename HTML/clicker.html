@@ -352,6 +352,25 @@
                 </div>
                 <p class="price"><span id="PREUTAVARES"></span>€</p>
             </div>
+            <div class="quadre" id="quadrellull">
+
+                <button id="llullbuy"><img class="player" src="llull.jpg"></img></button>
+                <div class="tooltip">
+                    <p>Sergio Llull: <a id="llull">0</a></p>
+                    <span class="tooltiptext">Cada Llull permet contractar 30 Reyes nous</span>
+                </div>
+                <p class="price"><span id="PREULLULL"></span>€</p>
+            </div>
+            <div class="quadre" id="quadrecampazzo">
+
+                <button id="campazzobuy"><img class="player" src="campazzo.jpg"></img></button>
+                <div class="tooltip">
+                    <p>Facundo Campazzo: <a id="campazzo">0</a></p>
+                    <span class="tooltiptext">Cada Campazzo permet contractar 30 Reyes nous</span>
+                </div>
+                <p class="price"><span id="PREUCAMPAZZO"></span>€</p>
+            </div>
+
 
 
 
@@ -524,6 +543,10 @@
         var btnBuyLaprovittola= document.getElementById("laprovittolabuy");
         var btnBuyCarroll= document.getElementById("carrollbuy");
         var btnBuyTavares= document.getElementById("tavaresbuy");
+        var btnBuyLlull= document.getElementById("llullbuy");
+        var btnBuyCampazzo= document.getElementById("campazzobuy");
+
+
 
 
 
@@ -573,6 +596,9 @@
         let laprovittolas=0;
         let carrolls=0;
         let tavaress=0;
+        let llulls=0;
+        let campazzos=0;
+
         
 
 
@@ -603,6 +629,10 @@
         const PREULAPROVITTOLA=10000;
         const PREUCARROLL=10000;
         const PREUTAVARES=10000;
+        const PREULLULL=10000;
+        const PREUCAMPAZZO=10000;
+
+
 
 
 
@@ -644,6 +674,10 @@
         document.getElementById("PREULAPROVITTOLA").innerText = PREULAPROVITTOLA;
         document.getElementById("PREUCARROLL").innerText = PREUCARROLL;
         document.getElementById("PREUTAVARES").innerText = PREUTAVARES;
+        document.getElementById("PREULLULL").innerText = PREULLULL;
+        document.getElementById("PREUCAMPAZZO").innerText = PREUCAMPAZZO;
+
+
 
 
 
@@ -683,6 +717,9 @@
         btnBuyLaprovittola.addEventListener("click", BuyLaprovittola);
         btnBuyCarroll.addEventListener("click", BuyCarroll);
         btnBuyTavares.addEventListener("click", BuyTavares);
+        btnBuyLlull.addEventListener("click", BuyLlull);
+        btnBuyCampazzo.addEventListener("click", BuyCampazzo);
+
 
 
 
@@ -1272,6 +1309,28 @@
             }
             else {
                 AvisarError("Et falten monedes. Preu " + PREUTAVARES + "€");
+            }
+        }
+        function BuyLlull() {
+            if (walletEuros >= PREULLULL) {
+                walletEuros = walletEuros - PREULLULL;
+                llulls++;
+                document.getElementById("llull").innerHTML = Intl.NumberFormat("de-DE").format(llulls);
+                ActualitzarMoneder();
+            }
+            else {
+                AvisarError("Et falten monedes. Preu " + PREULLULL + "€");
+            }
+        }
+        function BuyCampazzo() {
+            if (walletEuros >= PREUCAMPAZZO) {
+                walletEuros = walletEuros - PREUCAMPAZZO;
+                campazzos++;
+                document.getElementById("campazzo").innerHTML = Intl.NumberFormat("de-DE").format(campazzos);
+                ActualitzarMoneder();
+            }
+            else {
+                AvisarError("Et falten monedes. Preu " + PREUCAMPAZZO + "€");
             }
         }
 
