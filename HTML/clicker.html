@@ -134,6 +134,14 @@
         display: none;
     }
 
+    #quadrereyes{
+
+    }
+
+    #quadrethompkins{
+
+    }
+
 
 
     #jugadors {
@@ -219,7 +227,7 @@
             <div class="quadre" id="quadrereyes">
                 <button id="reyesbuy"><img class="player" src="reyes.jpg"></img></button>
                 <div class="tooltip">
-                    <p>Felipe Reyes: <a id="reyes">0/50</a></p>
+                    <p>Felipe Reyes: <a id="reyes">0/30</a></p>
                     <span class="tooltiptext">Cada Reyes anota 10 punts cada 10 segons</span>
                 </div>
                 <p class="price"><span id="PREUREYES"></span>€</p>
@@ -234,6 +242,15 @@
                 </div>
                 <p class="price"><span id="PREUSMITS"></span>€</p>
             </div>
+            <div class="quadre" id="quadrethompkins">
+
+                    <button id="thompkinsbuy"><img class="player" src="thompkins.jpg"></img></button>
+                    <div class="tooltip">
+                        <p>Trey Thompkins: <a id="thompkins">0</a></p>
+                        <span class="tooltiptext">Cada Thompkins permet contractar 30 Reyes nous</span>
+                    </div>
+                    <p class="price"><span id="PREUTHOMPKINS"></span>€</p>
+                </div>
             <!-- <br> -->
             <div class="quadre" id="quadreribas">
                 <button id="ribasbuy"><img class="player" src="ribas.jpg"></img></button>
@@ -393,6 +410,8 @@
 
 
         var btnBuyReyes = document.getElementById("reyesbuy");
+        var btnBuyThompkins = document.getElementById("thompkinsbuy");
+
 
 
 
@@ -422,11 +441,14 @@
         let higginss = 0;
         let daviess = 0;
         let mirotics = 0;
+        
         let reyess = 0;
+        let capacitatThompkins = 30;
+        let thompkinss=1;
 
 
         //PREUS
-        const PREUPUSTOVYI = 10;
+        let PREUPUSTOVYI = 10;
         const PREUSMITS = 1000;
         const PREURIBAS = 100;
         const PREUORIOLA = 1000;
@@ -442,6 +464,8 @@
         const PREUHIGGINS = 10000;
         const PREUDAVIES = 7000;
         const PREUMIROTIC = 170;
+        const PREUTHOMPKINS = 10000;
+
 
 
         //IMPRIMIR PREU
@@ -463,6 +487,8 @@
 
 
         document.getElementById("PREUREYES").innerText = PREUREYES;
+        document.getElementById("PREUTHOMPKINS").innerText = PREUTHOMPKINS;
+
 
 
 
@@ -494,6 +520,7 @@
         btnBuyMirotic.addEventListener("click", BuyMirotic);
 
         btnBuyReyes.addEventListener("click", BuyReyes);
+        btnBuyThompkins.addEventListener("click", BuyThompkins);
 
 
         //FUNCIONS ALERTES
@@ -553,6 +580,7 @@
             if (walletEuros >= PREUPUSTOVYI && pustovyis < capacitatSmits * smitss) {
                 walletEuros = walletEuros - PREUPUSTOVYI;
                 pustovyis++;
+                PREUPUSTOVYI++;
                 if (pustovyis == 15) {
                     document.getElementById("quadremirotic").style.display = "flex";
                 }
@@ -927,28 +955,42 @@
         //REYES
         //10 PUNTS CADA 10 SEGONS
         function BuyReyes() {
-            if (walletEuros >= PREUREYES && reyess < capacitatSmits * smitss) {
+            if (walletEuros >= PREUREYES && reyess < capacitatThompkins * thompkinss) {
                 walletEuros = walletEuros - PREUREYES;
                 reyess++;
-                if (reyess == 500) {
+                // if (reyess == 500) {
 
-                    document.getElementById("quadreabrines").style.display = "flex";
-                    document.getElementById("quadrekuric").style.display = "flex";
-                    document.getElementById("quadredelaney").style.display = "flex";
-                    document.getElementById("quadreclaver").style.display = "flex";
-                    document.getElementById("quadreheurtel").style.display = "flex";
-                    document.getElementById("quadrehanga").style.display = "flex";
-                }
-                document.getElementById("reyes").innerHTML = Intl.NumberFormat("de-DE").format(reyess) + "/" + 50 * smitss;
+                //     document.getElementById("quadreabrines").style.display = "flex";
+                //     document.getElementById("quadrekuric").style.display = "flex";
+                //     document.getElementById("quadredelaney").style.display = "flex";
+                //     document.getElementById("quadreclaver").style.display = "flex";
+                //     document.getElementById("quadreheurtel").style.display = "flex";
+                //     document.getElementById("quadrehanga").style.display = "flex";
+                // }
+                document.getElementById("reyes").innerHTML = Intl.NumberFormat("de-DE").format(reyess) + "/" + capacitatThompkins * thompkinss;
                 document.getElementById("preuPangos").innerHTML = preuPangos * pustovyis;
 
                 ActualitzarMoneder();
             }
-            else if (reyess == 50 * smitss) {
-                AvisarError("Has de comprar més Smits per poder comprar més Reyes");
+            else if (reyess == capacitatThompkins * thompkinss) {
+                AvisarError("Has de comprar més Thompkins per poder comprar més Reyes");
 
             } else {
                 AvisarError("Et falten monedes. Preu: " + PREUREYES + "€");
+            }
+        }
+
+        function BuyThompkins() {
+            if (walletEuros >= PREUTHOMPKINS) {
+                walletEuros = walletEuros - PREUTHOMPKINS;
+                thompkinss++;
+                document.getElementById("thompkins").innerHTML = Intl.NumberFormat("de-DE").format(thompkinss - 1);
+                ActualitzarMoneder();
+                document.getElementById("pustovyi").innerHTML = Intl.NumberFormat("de-DE").format(pustovyis) + "/" + capacitatThompkins * thompkinss;
+
+            }
+            else {
+                AvisarError("Et falten monedes. Preu " + PREUTHOMPKINS + "€");
             }
         }
 
