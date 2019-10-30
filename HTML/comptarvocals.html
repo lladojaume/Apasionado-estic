@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function comptarVocals(cadena){
+            let vector=[];
+            let vocals={a:0,e:0,i:0,o:0,u:0}
+            cadena=cadena.toLowerCase();
+                
+            for (i=0;i<cadena.length;i++){
+                vector.push(cadena.charAt(i));
+            }
+
+            vector.forEach((value,index,array)=>{
+                if(value=='a'){
+                    vocals.a++;
+                }
+                else if(value=='e'){
+                    vocals.e++;
+
+                }else if(value=='i'){
+                    vocals.i++;
+                    
+                }else if(value=='o'){
+                    vocals.o++;
+                    
+                }else if(value=='u'){
+                    vocals.u++;                    
+                }
+            })
+            console.log(vocals);
+
+        }
+
+        function invertirCadena(cadena){
+           
+            let resultat=cadena.split(" ").map(x=>x.split("").reverse().join("")).join(" ");
+
+            console.log(resultat);
+        }
+    
+    </script>
+    
+</body>
+</html>

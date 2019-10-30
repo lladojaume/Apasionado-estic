@@ -39,7 +39,6 @@
 
     #ball:active {
         transform: scale(1.1);
-
     }
 
     #ballcreator {
@@ -51,7 +50,6 @@
         display: flex;
         justify-content: space-between;
         font-family: Arial, Helvetica, sans-serif;
-
     }
 
     #ballseller {
@@ -83,17 +81,28 @@
         margin: 30px;
     }
 
-    #quadrepustovyi {}
+    #quadrepustovyi {
+    }
 
-    #quadresmits {}
+    #quadresmits {
+        display: none;
+    }
 
-    #quadreribas {}
+    #quadreribas {
+        display: none;
+    }
 
-    #quadreoriola {}
+    #quadreoriola {
+        display: none;
+    }
 
-    #quadretomic {}
+    #quadretomic {
+        display: none;
+    }
 
-    #quadrepangos {}
+    #quadrepangos {
+        display: none;
+    }
 
     #quadreabrines {
         display: none;
@@ -105,8 +114,6 @@
 
     #quadredelaney {
         display: none;
-
-
     }
 
     #quadreclaver {
@@ -116,7 +123,6 @@
     #quadreheurtel {
         display: none;
     }
-
 
     #quadrehanga {
         display: none;
@@ -134,32 +140,58 @@
         display: none;
     }
 
-    #quadrereyes {}
+    #quadrereyes {
+        display: none;
 
-    #quadrethompkins {}
+    }
 
-    #quadremickey {}
+    #quadrethompkins {
+        display: none;
+    }
 
-    #quadrerandolph {}
+    #quadremickey {
+        display: none;
+    }
 
-    #quadredeck {}
+    #quadrerandolph {
+        display: none;
+    }
 
-    #quadrecauseur {}
+    #quadredeck {
+        display: none;
+    }
 
-    #quadretaylor {}
+    #quadrecauseur {
+        display: none;
+    }
 
-    #quadrerudy {}
+    #quadretaylor {
+        display: none;
+    }
 
-    #quadrelaprovittola {}
+    #quadrerudy {
+        display: none;
+    }
 
-    #quadrecarroll {}
+    #quadrelaprovittola {
+        display: none;
+    }
 
-    #quadretavares {}
+    #quadrecarroll {
+        display: none;
+    }
 
-    #quadrellull {}
+    #quadretavares {
+        display: none;
+    }
 
-    #quadrecampazzo {}
+    #quadrellull {
+        display: none;
+    }
 
+    #quadrecampazzo {
+        display: none;
+    }
 
     #jugadors {
         border: 2px solid black;
@@ -187,7 +219,6 @@
         text-align: center;
         border-radius: 6px;
         padding: 5px 0;
-
         /* Position the tooltip */
         position: absolute;
         z-index: 1;
@@ -510,6 +541,67 @@
 
     <script>
 
+        // let VariablesI = [productivitatBarsa, productivitatMadrid, interval, ballNum, walletEuros, pustovyis, capacitatSmits, smitss, capacitatRibas
+        //     , ribass, oriolas, tomics, pangoss, abriness, kurics, delaneys, clavers, heurtels, doblecodigo, hangas, higginss, daviess, mirotics, reyess, capacitatThompkins
+        //     , thompkinss, mickeys, randolphs, decks, causeurs, taylors, rudys, laprovittolas, carrolls, tavaress, llulls, campazzos, PREUPUSTOVYI,preuPangos,PREUREYES];
+        // let Variables;
+
+        // function init(){
+        //     if(localStorage.variables!=null){
+        //         Variables=JSON.parse(localStorage.variables);
+        //     }else{
+        //         Variables=VariablesI;
+        //     }
+        // }
+
+        // function setVariables(){
+        //     localStorage.variables=JSON.stringify(Variables);
+        //     resetVariables();
+        // }
+
+        // function resetVariables(){
+        //     // productivitatBarsa=VariablesI[0];
+        //     // productivitatMadrid=VariablesI[1];
+        //     // interval==VariablesI[2];
+        //     document.getElementById("balls").innerText=VariablesI[3];
+        //     document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(VariablesI[4].toFixed(2));
+        //     document.getElementById("pustovyi").innerHTML = Intl.NumberFormat("de-DE").format(VariablesI[5]) + "/" + VariablesI[6] * VariablesI[7];
+        //     document.getElementById("smits").innerText = VariablesI[7];
+        //     document.getelementbyid("ribas").innertext = VariablesI[9];
+        //     document.getelementbyid("oriola").innertext = VariablesI[10];
+        //     document.getelementbyid("tomic").innertext = VariablesI[11];
+        //     document.getelementbyid("pangos").innertext = VariablesI[12];
+        //     document.getelementbyid("abrines").innertext = VariablesI[13];
+        //     document.getelementbyid("kuric").innertext = VariablesI[14];
+        //     document.getelementbyid("delaney").innertext = VariablesI[15];
+        //     document.getelementbyid("claver").innertext = VariablesI[16];
+        //     document.getelementbyid("heurtel").innertext = VariablesI[17];
+        //     document.getelementbyid("hanga").innertext = VariablesI[19];
+        //     document.getelementbyid("higgins").innertext = VariablesI[20];
+        //     document.getelementbyid("davies").innertext = VariablesI[21];
+        //     document.getelementbyid("mirotic").innertext = VariablesI[22];
+        //     document.getelementbyid("reyes").innertext = VariablesI[23]+ "/" + VariablesI[24] * VariablesI[25];
+        //     document.getelementbyid("thompkins").innertext = VariablesI[25];
+        //     document.getelementbyid("mickey").innertext = VariablesI[26];
+        //     document.getelementbyid("randolph").innertext = VariablesI[27];
+        //     document.getelementbyid("deck").innertext = VariablesI[28];
+        //     document.getelementbyid("causeur").innertext = VariablesI[29];
+        //     document.getelementbyid("taylor").innertext = VariablesI[30];
+        //     document.getelementbyid("rudy").innertext = VariablesI[31];
+        //     document.getelementbyid("laprovittola").innertext = VariablesI[32];
+        //     document.getelementbyid("carroll").innertext = VariablesI[33];
+        //     document.getelementbyid("tavares").innertext = VariablesI[34];
+        //     document.getelementbyid("llull").innertext = VariablesI[35];
+        //     document.getelementbyid("campazzo").innertext = VariablesI[36];
+        //     document.getElementById("PREUPUSTOVYI").innerText = VariablesI[37];
+        //     document.getElementById("preuPangos").innerText = VariablesI[38] * VariablesI[5];
+        //     document.getElementById("PREUREYES").innerText = VariablesI[39];
+
+        // }
+
+
+
+        // init();
 
         var btnBallCreator = document.getElementById("ballcreator");
         var btnBallSeller = document.getElementById("ballseller");
@@ -528,38 +620,19 @@
         var btnBuyHiggins = document.getElementById("higginsbuy");
         var btnBuyDavies = document.getElementById("daviesbuy");
         var btnBuyMirotic = document.getElementById("miroticbuy");
-
-
-
-
         var btnBuyReyes = document.getElementById("reyesbuy");
         var btnBuyThompkins = document.getElementById("thompkinsbuy");
         var btnBuyMickey = document.getElementById("mickeybuy");
         var btnBuyRandolph = document.getElementById("randolphbuy");
         var btnBuyDeck = document.getElementById("deckbuy");
-        var btnBuyCauseur= document.getElementById("causeurbuy");
-        var btnBuyTaylor= document.getElementById("taylorbuy");
-        var btnBuyRudy= document.getElementById("rudybuy");
-        var btnBuyLaprovittola= document.getElementById("laprovittolabuy");
-        var btnBuyCarroll= document.getElementById("carrollbuy");
-        var btnBuyTavares= document.getElementById("tavaresbuy");
-        var btnBuyLlull= document.getElementById("llullbuy");
-        var btnBuyCampazzo= document.getElementById("campazzobuy");
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        var btnBuyCauseur = document.getElementById("causeurbuy");
+        var btnBuyTaylor = document.getElementById("taylorbuy");
+        var btnBuyRudy = document.getElementById("rudybuy");
+        var btnBuyLaprovittola = document.getElementById("laprovittolabuy");
+        var btnBuyCarroll = document.getElementById("carrollbuy");
+        var btnBuyTavares = document.getElementById("tavaresbuy");
+        var btnBuyLlull = document.getElementById("llullbuy");
+        var btnBuyCampazzo = document.getElementById("campazzobuy");
         let productivitatBarsa = 1;
         let productivitatMadrid = 1;
         let interval = 10;//Cada 10 segons el pustovyi fa una pilota
@@ -583,24 +656,20 @@
         let higginss = 0;
         let daviess = 0;
         let mirotics = 0;
-
         let reyess = 0;
         let capacitatThompkins = 30;
         let thompkinss = 1
-        let mickeys=0;
-        let randolphs=0;
-        let decks=0;
-        let causeurs=0;
-        let taylors=0;
-        let rudys=0;
-        let laprovittolas=0;
-        let carrolls=0;
-        let tavaress=0;
-        let llulls=0;
-        let campazzos=0;
-
-        
-
+        let mickeys = 0;
+        let randolphs = 0;
+        let decks = 0;
+        let causeurs = 0;
+        let taylors = 0;
+        let rudys = 0;
+        let laprovittolas = 0;
+        let carrolls = 0;
+        let tavaress = 0;
+        let llulls = 0;
+        let campazzos = 0;
 
         //PREUS
         let PREUPUSTOVYI = 10;
@@ -620,31 +689,17 @@
         const PREUDAVIES = 7000;
         const PREUMIROTIC = 170;
         const PREUTHOMPKINS = 10000;
-        const PREUMICKEY=10000;
-        const PREURANDOLPH=10000;
-        const PREUDECK=10000;
-        const PREUCAUSEUR=10000;
-        const PREUTAYLOR=10000;
-        const PREURUDY=10000;
-        const PREULAPROVITTOLA=10000;
-        const PREUCARROLL=10000;
-        const PREUTAVARES=10000;
-        const PREULLULL=10000;
-        const PREUCAMPAZZO=10000;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        const PREUMICKEY = 10000;
+        const PREURANDOLPH = 10000;
+        const PREUDECK = 10000;
+        const PREUCAUSEUR = 10000;
+        const PREUTAYLOR = 10000;
+        const PREURUDY = 10000;
+        const PREULAPROVITTOLA = 10000;
+        const PREUCARROLL = 10000;
+        const PREUTAVARES = 10000;
+        const PREULLULL = 10000;
+        const PREUCAMPAZZO = 10000;
         //IMPRIMIR PREU
         document.getElementById("PREUPUSTOVYI").innerText = PREUPUSTOVYI;
         document.getElementById("PREUSMITS").innerText = PREUSMITS;
@@ -661,8 +716,6 @@
         document.getElementById("PREUHIGGINS").innerText = PREUHIGGINS;
         document.getElementById("PREUDAVIES").innerText = PREUDAVIES;
         document.getElementById("PREUMIROTIC").innerText = PREUMIROTIC;
-
-
         document.getElementById("PREUREYES").innerText = PREUREYES;
         document.getElementById("PREUTHOMPKINS").innerText = PREUTHOMPKINS;
         document.getElementById("PREUMICKEY").innerText = PREUMICKEY;
@@ -676,18 +729,6 @@
         document.getElementById("PREUTAVARES").innerText = PREUTAVARES;
         document.getElementById("PREULLULL").innerText = PREULLULL;
         document.getElementById("PREUCAMPAZZO").innerText = PREUCAMPAZZO;
-
-
-
-
-
-
-
-
-
-
-
-
         btnBallCreator.addEventListener("click", IncrementBall);
         btnBallSeller.addEventListener("click", SellBall);
         btnBuyPustovy.addEventListener("click", BuyPustovy);
@@ -705,7 +746,6 @@
         btnBuyHiggins.addEventListener("click", BuyHiggins);
         btnBuyDavies.addEventListener("click", BuyDavies);
         btnBuyMirotic.addEventListener("click", BuyMirotic);
-
         btnBuyReyes.addEventListener("click", BuyReyes);
         btnBuyThompkins.addEventListener("click", BuyThompkins);
         btnBuyMickey.addEventListener("click", BuyMickey);
@@ -719,46 +759,42 @@
         btnBuyTavares.addEventListener("click", BuyTavares);
         btnBuyLlull.addEventListener("click", BuyLlull);
         btnBuyCampazzo.addEventListener("click", BuyCampazzo);
-
-
-
-
-
-
-
-
-
-
-
-
         //FUNCIONS ALERTES
         function TempsEspera() {
             alerta.style.display = 'none';
         }
-
         function AvisarError(error) {
             document.getElementById("alerta").innerText = error;
             alerta.style.display = 'block';
             espera = setTimeout(TempsEspera, 3000);
-
         }
 
+        //DESBLOQUEJAR JUGADORS
+        // function Desbloquejar(desbloqueja){
+        //     document.getElementById("quadre"+desbloqueja).style.display = "flex";
+        // }
+
+        // function Desbloquejar(jugador, quantitat, desbloqueja) {
+        //     if (jugador == quantitat) {
+        //         document.getElementById("quadre" + desbloqueja).style.display = "flex";
+        //     }
+        // }
         function ActualitzarMoneder() {
             document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
+            // setVariables();
         }
-
-
         function IncrementBall() {
+
             if (ballNum < capacitatRibas * ribass || higginss == 1) {
                 ballNum = ballNum + (Math.pow(10, mirotics));
+                // Desbloquejar(ballNum, 50, "pustovyi");
 
             } else {
                 AvisarError("Has de comprar més Pau Ribas");
             }
             document.getElementById("balls").innerHTML = Intl.NumberFormat("de-DE").format(ballNum);
-
+            // setVariables();
         }
-
         function ActualizarPustovyi() {
             if (ballNum < capacitatRibas * ribass * hangas || higgins == 1) {
                 ballNum = ballNum + pustovyis * productivitatBarsa + reyess * productivitatMadrid * 10;
@@ -769,12 +805,9 @@
                 //     timer = setInterval(ActualizarPustovyi, 1000 * interval);
             }
             document.getElementById("balls").innerHTML = Intl.NumberFormat("de-DE").format(ballNum);
-
+            // setVariables();
         }
-
         timer = setInterval(ActualizarPustovyi, 1000 * interval);
-
-
         function SellBall() {
             if (ballNum > 0) {
                 walletEuros = walletEuros + (ballNum * 0.10 * (Math.pow(2, doblecodigo)));
@@ -790,10 +823,11 @@
                 pustovyis++;
                 PREUPUSTOVYI++;
                 document.getElementById("PREUPUSTOVYI").innerText = PREUPUSTOVYI;
-
                 if (pustovyis == 15) {
                     document.getElementById("quadremirotic").style.display = "flex";
                 }
+                // Debloquejar(pustovyis,15,mirotic);
+
                 if (pustovyis == 500) {
                     // document.getElementById("jugadors").style.overflowY="scroll";                    
                     document.getElementById("quadreabrines").style.display = "flex";
@@ -807,18 +841,14 @@
                 }
                 document.getElementById("pustovyi").innerHTML = Intl.NumberFormat("de-DE").format(pustovyis) + "/" + 50 * smitss;
                 document.getElementById("preuPangos").innerHTML = preuPangos * pustovyis;
-
                 ActualitzarMoneder();
             }
             else if (pustovyis == 50 * smitss) {
                 AvisarError("Has de comprar més Smits per poder comprar més Pustovyis");
-
             } else {
                 AvisarError("Et falten monedes. Preu: " + PREUPUSTOVYI + "€");
             }
         }
-
-
         //oficina
         function BuySmits() {
             if (walletEuros >= PREUSMITS) {
@@ -827,7 +857,6 @@
                 document.getElementById("smits").innerHTML = Intl.NumberFormat("de-DE").format(smitss - 1);
                 ActualitzarMoneder();
                 document.getElementById("pustovyi").innerHTML = Intl.NumberFormat("de-DE").format(pustovyis) + "/" + capacitatSmits * smitss;
-
             }
             else {
                 AvisarError("Et falten monedes. Preu " + PREUSMITS + "€");
@@ -841,7 +870,6 @@
                 if (ribass == 31) {
                     document.getElementById("quadrehiggins").style.display = "flex";
                 }
-
                 document.getElementById("ribas").innerHTML = Intl.NumberFormat("de-DE").format(ribass - 1);
                 ActualitzarMoneder();
             }
@@ -851,14 +879,12 @@
         }
         //formador
         //productivitatBarsa *10
-
         function BuyOriola() {
             if (oriolas < 1) {
                 if (walletEuros >= PREUORIOLA) {
                     walletEuros = walletEuros - PREUORIOLA;
                     oriolas++;
                     productivitatBarsa = productivitatBarsa * 10;
-
                     document.getElementById("oriola").innerHTML = Intl.NumberFormat("de-DE").format(oriolas);
                     ActualitzarMoneder();
                 }
@@ -872,7 +898,6 @@
         }
         //maquina cafe
         //productivitatBarsa *2
-
         function BuyTomic() {
             if (tomics < 1) {
                 if (walletEuros >= PREUTOMIC) {
@@ -893,10 +918,8 @@
                 AvisarError("Només en pots tenir un!");
             }
         }
-
         //incentivo
         //productivitatBarsa *10
-
         function BuyPangos() {
             if (pustovyis > 0) {
                 if (walletEuros >= pustovyis * preuPangos) {
@@ -919,13 +942,10 @@
                 AvisarError("No tens cap Pustovyi per millorar.")
             }
         }
-
         //SCRUM
         //productivitatBarsa *4
-
         function BuyAbrines() {
             if (pustovyis >= 500) {
-
                 if (abriness < 1) {
                     if (walletEuros >= PREUABRINES) {
                         walletEuros = walletEuros - PREUABRINES;
@@ -949,7 +969,6 @@
                 AvisarError("Has de tenir 500 Pustovyis!");
             }
         }
-
         //CTO
         //productivitatBarsa *50
         function BuyKuric() {
@@ -977,7 +996,6 @@
                 AvisarError("Has de tenir 500 Pustovyis!");
             }
         }
-
         //COMERCIAL
         //PREU 1000€ INCREMENTA PREU PILOTA x2
         function BuyDelaney() {
@@ -1003,8 +1021,6 @@
                 AvisarError("Has de tenir 500 Pustovyis!");
             }
         }
-
-
         //CAMPAÑA
         //PREU 2000€ INCREMENTA PREU PILOTA x2
         function BuyClaver() {
@@ -1030,7 +1046,6 @@
                 AvisarError("Has de tenir 500 Pustovyis!");
             }
         }
-
         //AGENCIA
         //PREU 5000€ INCREMENTA PREU PILOTA x2
         function BuyHeurtel() {
@@ -1056,7 +1071,6 @@
                 AvisarError("Has de tenir 500 Pustovyis!");
             }
         }
-
         //COMPRESION
         //PREU 1000€ INCREMENTA els discos incrementen capacitat per dos. per tant podem multiplicar per dos els discos i actualitzar els que tinguem comprats i els nous que comprem
         function BuyHanga() {
@@ -1082,7 +1096,6 @@
                 AvisarError("Has de tenir 500 Pustovyis!");
             }
         }
-
         //HIGGINS
         //EMMAGATZEMATGE INFINIT
         function BuyHiggins() {
@@ -1091,7 +1104,6 @@
                     if (walletEuros >= PREUHIGGINS) {
                         walletEuros = walletEuros - PREUHIGGINS;
                         higginss++;
-
                         document.getElementById("higgins").innerHTML = Intl.NumberFormat("de-DE").format(higgins);
                         ActualitzarMoneder();
                     }
@@ -1107,11 +1119,8 @@
                 AvisarError("Has de tenir 500 Pustovyis!");
             }
         }
-
-
         //DAVIES
         //DUPLICA productivitatBarsa(DUPLICA PUNTS CADA 10 SEGONS)
-
         function BuyDavies() {
             if (pustovyis >= 500) {
                 if (daviess < 1) {
@@ -1119,7 +1128,6 @@
                         walletEuros = walletEuros - PREUDAVIES;
                         daviess++;
                         productivitatBarsa = productivitatBarsa * 2;
-
                         document.getElementById("davies").innerHTML = Intl.NumberFormat("de-DE").format(daviess);
                         ActualitzarMoneder();
                     }
@@ -1135,9 +1143,6 @@
                 AvisarError("Has de tenir 500 Pustovyis!");
             }
         }
-
-
-
         //MIROTIC
         //CADA CLIC VAL 10
         function BuyMirotic() {
@@ -1161,8 +1166,6 @@
                 AvisarError("Has de tenir 20 Pustovyis!");
             }
         }
-
-
         //REYES
         //10 PUNTS CADA 10 SEGONS
         function BuyReyes() {
@@ -1172,7 +1175,6 @@
                 PREUREYES = PREUREYES + 10;
                 document.getElementById("PREUREYES").innerHTML = PREUREYES;
                 // if (reyess == 500) {
-
                 //     document.getElementById("quadreabrines").style.display = "flex";
                 //     document.getElementById("quadrekuric").style.display = "flex";
                 //     document.getElementById("quadredelaney").style.display = "flex";
@@ -1182,17 +1184,14 @@
                 // }
                 document.getElementById("reyes").innerHTML = Intl.NumberFormat("de-DE").format(reyess) + "/" + capacitatThompkins * thompkinss;
                 document.getElementById("preuPangos").innerHTML = preuPangos * pustovyis;
-
                 ActualitzarMoneder();
             }
             else if (reyess == capacitatThompkins * thompkinss) {
                 AvisarError("Has de comprar més Thompkins per poder comprar més Reyes");
-
             } else {
                 AvisarError("Et falten monedes. Preu: " + PREUREYES + "€");
             }
         }
-
         function BuyThompkins() {
             if (walletEuros >= PREUTHOMPKINS) {
                 walletEuros = walletEuros - PREUTHOMPKINS;
@@ -1200,13 +1199,11 @@
                 document.getElementById("thompkins").innerHTML = Intl.NumberFormat("de-DE").format(thompkinss - 1);
                 ActualitzarMoneder();
                 document.getElementById("reyes").innerHTML = Intl.NumberFormat("de-DE").format(reyess) + "/" + capacitatThompkins * thompkinss;
-
             }
             else {
                 AvisarError("Et falten monedes. Preu " + PREUTHOMPKINS + "€");
             }
         }
-
         function BuyMickey() {
             if (walletEuros >= PREUMICKEY) {
                 walletEuros = walletEuros - PREUMICKEY;
@@ -1218,7 +1215,6 @@
                 AvisarError("Et falten monedes. Preu " + PREUMICKEY + "€");
             }
         }
-
         function BuyRandolph() {
             if (walletEuros >= PREURANDOLPH) {
                 walletEuros = walletEuros - PREURANDOLPH;
@@ -1230,7 +1226,6 @@
                 AvisarError("Et falten monedes. Preu " + PREURANDOLPH + "€");
             }
         }
-
         function BuyDeck() {
             if (walletEuros >= PREUDECK) {
                 walletEuros = walletEuros - PREUDECK;
@@ -1242,7 +1237,6 @@
                 AvisarError("Et falten monedes. Preu " + PREUDECK + "€");
             }
         }
-
         function BuyCauseur() {
             if (walletEuros >= PREUCAUSEUR) {
                 walletEuros = walletEuros - PREUCAUSEUR;
@@ -1287,7 +1281,6 @@
                 AvisarError("Et falten monedes. Preu " + PREULAPROVITTOLA + "€");
             }
         }
-
         function BuyCarroll() {
             if (walletEuros >= PREUCARROLL) {
                 walletEuros = walletEuros - PREUCARROLL;
@@ -1299,7 +1292,6 @@
                 AvisarError("Et falten monedes. Preu " + PREUCARROLL + "€");
             }
         }
-
         function BuyTavares() {
             if (walletEuros >= PREUTAVARES) {
                 walletEuros = walletEuros - PREUTAVARES;
@@ -1333,12 +1325,6 @@
                 AvisarError("Et falten monedes. Preu " + PREUCAMPAZZO + "€");
             }
         }
-
-
-
-
-
-
     </script>
 </body>
 
