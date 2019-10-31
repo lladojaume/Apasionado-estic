@@ -28,6 +28,10 @@
         transform: scale(1.1);
     }
 
+    button {
+        cursor: pointer;
+    }
+
     /* treu borde a tots els botons */
     button:focus {
         outline: 0;
@@ -76,121 +80,9 @@
     }
 
     .quadre {
-        display: flex;
+        display: none;
         justify-content: space-around;
         margin: 30px;
-    }
-
-    #quadrepustovyi {
-    }
-
-    #quadresmits {
-        display: none;
-    }
-
-    #quadreribas {
-        display: none;
-    }
-
-    #quadreoriola {
-        display: none;
-    }
-
-    #quadretomic {
-        display: none;
-    }
-
-    #quadrepangos {
-        display: none;
-    }
-
-    #quadreabrines {
-        display: none;
-    }
-
-    #quadrekuric {
-        display: none;
-    }
-
-    #quadredelaney {
-        display: none;
-    }
-
-    #quadreclaver {
-        display: none;
-    }
-
-    #quadreheurtel {
-        display: none;
-    }
-
-    #quadrehanga {
-        display: none;
-    }
-
-    #quadrehiggins {
-        display: none;
-    }
-
-    #quadredavies {
-        display: none;
-    }
-
-    #quadremirotic {
-        display: none;
-    }
-
-    #quadrereyes {
-        display: none;
-
-    }
-
-    #quadrethompkins {
-        display: none;
-    }
-
-    #quadremickey {
-        display: none;
-    }
-
-    #quadrerandolph {
-        display: none;
-    }
-
-    #quadredeck {
-        display: none;
-    }
-
-    #quadrecauseur {
-        display: none;
-    }
-
-    #quadretaylor {
-        display: none;
-    }
-
-    #quadrerudy {
-        display: none;
-    }
-
-    #quadrelaprovittola {
-        display: none;
-    }
-
-    #quadrecarroll {
-        display: none;
-    }
-
-    #quadretavares {
-        display: none;
-    }
-
-    #quadrellull {
-        display: none;
-    }
-
-    #quadrecampazzo {
-        display: none;
     }
 
     #jugadors {
@@ -230,7 +122,7 @@
 
     #alerta {
         height: 100px;
-        width: 2100px;
+        width: 99%;
         position: absolute;
         justify-content: space-around;
         background-color: black;
@@ -305,8 +197,8 @@
 
                 <button id="mickeybuy"><img class="player" src="mickey.jpg"></img></button>
                 <div class="tooltip">
-                    <p>Jordan Mickey: <a id="mickey">0</a></p>
-                    <span class="tooltiptext">Cada Mickey permet contractar 30 Reyes nous</span>
+                    <p>Jordan Mickey: <a id="mickey">0</a>/1</p>
+                    <span class="tooltiptext">Incrementa la productivitat dels Reyes x2</span>
                 </div>
                 <p class="price"><span id="PREUMICKEY"></span>€</p>
             </div>
@@ -314,8 +206,8 @@
 
                 <button id="randolphbuy"><img class="player" src="randolph.jpg"></img></button>
                 <div class="tooltip">
-                    <p>Anthony Randolph: <a id="randolph">0</a></p>
-                    <span class="tooltiptext">Cada Randolph permet contractar 30 Reyes nous</span>
+                    <p>Anthony Randolph: <a id="randolph">0</a>/1</p>
+                    <span class="tooltiptext">Cada clic a la pilota suma 100 punts</span>
                 </div>
                 <p class="price"><span id="PREURANDOLPH"></span>€</p>
             </div>
@@ -401,8 +293,6 @@
                 </div>
                 <p class="price"><span id="PREUCAMPAZZO"></span>€</p>
             </div>
-
-
 
 
             <!-- <br> -->
@@ -634,7 +524,7 @@
         var btnBuyLlull = document.getElementById("llullbuy");
         var btnBuyCampazzo = document.getElementById("campazzobuy");
         let productivitatBarsa = 1;
-        let productivitatMadrid = 1;
+        let productivitatMadrid = 10;
         let interval = 10;//Cada 10 segons el pustovyi fa una pilota
         let ballNum = 0;
         let walletEuros = 0;
@@ -690,7 +580,7 @@
         const PREUMIROTIC = 170;
         const PREUTHOMPKINS = 10000;
         const PREUMICKEY = 10000;
-        const PREURANDOLPH = 10000;
+        const PREURANDOLPH = 1000;
         const PREUDECK = 10000;
         const PREUCAUSEUR = 10000;
         const PREUTAYLOR = 10000;
@@ -770,9 +660,9 @@
         }
 
         //DESBLOQUEJAR JUGADORS
-        // function Desbloquejar(desbloqueja){
-        //     document.getElementById("quadre"+desbloqueja).style.display = "flex";
-        // }
+        function Desbloquejar(desbloqueja) {
+            document.getElementById("quadre" + desbloqueja).style.display = "flex";
+        }
 
         // function Desbloquejar(jugador, quantitat, desbloqueja) {
         //     if (jugador == quantitat) {
@@ -784,11 +674,13 @@
             // setVariables();
         }
         function IncrementBall() {
-
             if (ballNum < capacitatRibas * ribass || higginss == 1) {
-                ballNum = ballNum + (Math.pow(10, mirotics));
+                ballNum = ballNum + Math.pow((Math.pow(10, mirotics)), randolphs + 1);
+                
                 // Desbloquejar(ballNum, 50, "pustovyi");
-
+                if (ballNum == 50) {
+                    Desbloquejar("pustovyi");
+                }
             } else {
                 AvisarError("Has de comprar més Pau Ribas");
             }
@@ -797,7 +689,7 @@
         }
         function ActualizarPustovyi() {
             if (ballNum < capacitatRibas * ribass * hangas || higgins == 1) {
-                ballNum = ballNum + pustovyis * productivitatBarsa + reyess * productivitatMadrid * 10;
+                ballNum = ballNum + pustovyis * productivitatBarsa + reyess * productivitatMadrid;
             }
             else {
                 AvisarError("Has de comprar més Pau Ribas");
@@ -823,21 +715,26 @@
                 pustovyis++;
                 PREUPUSTOVYI++;
                 document.getElementById("PREUPUSTOVYI").innerText = PREUPUSTOVYI;
-                if (pustovyis == 15) {
-                    document.getElementById("quadremirotic").style.display = "flex";
+                document.getElementById("quadrepustovyi").style.backgroundColor="green";
+
+                if(pustovyis==10){
+                    Desbloquejar("reyes");
                 }
-                // Debloquejar(pustovyis,15,mirotic);
+                if (pustovyis == 15) {
+                    Desbloquejar("mirotic");
+                }
+                // Debloquejar(pustovyis,15,mirotic);                
 
                 if (pustovyis == 500) {
-                    // document.getElementById("jugadors").style.overflowY="scroll";                    
-                    document.getElementById("quadreabrines").style.display = "flex";
-                    document.getElementById("quadrekuric").style.display = "flex";
-                    document.getElementById("quadredelaney").style.display = "flex";
-                    document.getElementById("quadreclaver").style.display = "flex";
-                    document.getElementById("quadreheurtel").style.display = "flex";
-                    document.getElementById("quadrehanga").style.display = "flex";
-                    document.getElementById("quadrehiggins").style.display = "flex";
-                    document.getElementById("quadredavies").style.display = "flex";
+                    // document.getElementById("jugadors").style.overflowY="scroll";   
+                    Desbloquejar("abrines");
+                    Desbloquejar("kuric");
+                    Desbloquejar("delaney");
+                    Desbloquejar("claver");
+                    Desbloquejar("heurtel");
+                    Desbloquejar("hanga");
+                    Desbloquejar("higgins");
+                    Desbloquejar("davies");
                 }
                 document.getElementById("pustovyi").innerHTML = Intl.NumberFormat("de-DE").format(pustovyis) + "/" + 50 * smitss;
                 document.getElementById("preuPangos").innerHTML = preuPangos * pustovyis;
@@ -1205,25 +1102,35 @@
             }
         }
         function BuyMickey() {
-            if (walletEuros >= PREUMICKEY) {
-                walletEuros = walletEuros - PREUMICKEY;
-                mickeys++;
-                document.getElementById("mickey").innerHTML = Intl.NumberFormat("de-DE").format(mickeys);
-                ActualitzarMoneder();
-            }
-            else {
-                AvisarError("Et falten monedes. Preu " + PREUMICKEY + "€");
+            if (mickeys < 1) {
+                if (walletEuros >= PREUMICKEY) {
+                    walletEuros = walletEuros - PREUMICKEY;
+                    productivitatMadrid = productivitatMadrid * 2;
+                    mickeys++;
+                    document.getElementById("mickey").innerHTML = Intl.NumberFormat("de-DE").format(mickeys);
+                    ActualitzarMoneder();
+                }
+                else {
+                    AvisarError("Et falten monedes. Preu " + PREUMICKEY + "€");
+                }
+            } else {
+                AvisarError("Només en pots tenir un!");
             }
         }
         function BuyRandolph() {
-            if (walletEuros >= PREURANDOLPH) {
-                walletEuros = walletEuros - PREURANDOLPH;
-                randolphs++;
-                document.getElementById("randolph").innerHTML = Intl.NumberFormat("de-DE").format(randolphs);
-                ActualitzarMoneder();
-            }
-            else {
-                AvisarError("Et falten monedes. Preu " + PREURANDOLPH + "€");
+            if (randolphs < 1) {
+                if (walletEuros >= PREURANDOLPH) {
+                    walletEuros = walletEuros - PREURANDOLPH;
+                    randolphs++;
+                    document.getElementById("randolph").innerHTML = Intl.NumberFormat("de-DE").format(randolphs);
+                    ActualitzarMoneder();
+                    document.getElementById("quadrerandolph").style.backgroundColor="red";
+                }
+                else {
+                    AvisarError("Et falten monedes. Preu " + PREURANDOLPH + "€");
+                }
+            } else {
+                AvisarError("Només en pots tenir un!");
             }
         }
         function BuyDeck() {
