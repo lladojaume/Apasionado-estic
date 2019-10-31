@@ -658,6 +658,14 @@
             alerta.style.display = 'block';
             espera = setTimeout(TempsEspera, 3000);
         }
+        function AvisarDesbloqueig() {
+            document.getElementById("alerta").innerText = "Nova millora desbloquejada";
+            alerta.style.backgroundColor = 'green';
+            alerta.style.display = 'block';
+            espera = setTimeout(TempsEspera, 3000);
+        }
+
+        
 
         //DESBLOQUEJAR JUGADORS
         function Desbloquejar(desbloqueja) {
@@ -717,7 +725,8 @@
                 document.getElementById("PREUPUSTOVYI").innerText = PREUPUSTOVYI;
                 document.getElementById("quadrepustovyi").style.backgroundColor="green";
 
-                if(pustovyis==10){
+                if(pustovyis==1){
+                    AvisarDesbloqueig();
                     Desbloquejar("reyes");
                 }
                 if (pustovyis == 15) {
