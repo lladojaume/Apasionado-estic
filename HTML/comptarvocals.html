@@ -1,51 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
     <script>
-        function comptarVocals(cadena){
-            let vector=[];
-            let vocals={a:0,e:0,i:0,o:0,u:0}
-            cadena=cadena.toLowerCase();
-                
-            for (i=0;i<cadena.length;i++){
+        function comptarVocals(cadena) {
+            let vector = [];
+            let vocals = { a: 0, e: 0, i: 0, o: 0, u: 0 }
+            cadena = cadena.toLowerCase();
+
+            for (i = 0; i < cadena.length; i++) {
                 vector.push(cadena.charAt(i));
             }
 
-            vector.forEach((value,index,array)=>{
-                if(value=='a'){
+            vector.forEach((value, index, array) => {
+                if (value == 'a') {
                     vocals.a++;
                 }
-                else if(value=='e'){
+                else if (value == 'e') {
                     vocals.e++;
 
-                }else if(value=='i'){
+                } else if (value == 'i') {
                     vocals.i++;
-                    
-                }else if(value=='o'){
+
+                } else if (value == 'o') {
                     vocals.o++;
-                    
-                }else if(value=='u'){
-                    vocals.u++;                    
+
+                } else if (value == 'u') {
+                    vocals.u++;
                 }
             })
             console.log(vocals);
 
         }
 
-        function invertirCadena(cadena){
-           
-            let resultat=cadena.split(" ").map(x=>x.split("").reverse().join("")).join(" ");
+        function invertirCadena(cadena) {
+
+            let resultat = cadena.split(" ").map(x => x.split("").reverse().join("")).join(" ");
 
             console.log(resultat);
         }
-    
+
+        function Limitar(cadena, min) {
+            let resultat = cadena.split(" ").filter(x => x.length > min).join(" ");
+            console.log(resultat);
+        }
+
+        num = [1, 2, 3, 4, 5];
+
+        let suma = num.reduce((total, valor, indice, array) => {
+            console.log(indice + "|" + total);
+            return total + valor;
+        });
+
+        console.log(suma);
+
+        let mayor = num.reduce((total, valor, indice, array) => {
+
+            return total < valor ? valor : total;
+        });
+        console.log(mayor);
+
+
+        function MasCorta(cadena) {
+            let peor = cadena.split(" ").sort().reduce((total, valor) => {
+                return valor.length < total.length ? valor : total;
+            });
+            console.log(peor);
+        }
+
+        function MasCorta(cadena) {
+            let peor = cadena.split(" ").sort().reduce((total, valor) => {
+                return valor.length < total.length ? valor : total;
+            });
+            console.log(peor);
+        }
+
+        function MasdeTres(cadena) {
+            let masdetres = cadena.split(" ").every((valor) => {
+                return valor.length > 3;
+            });
+            console.log(masdetres);
+        }
+
+        function MasdeDiez(cadena) {
+            let masdediez = cadena.split(" ").some((valor) => {
+                return valor.length > 10;
+            });
+            console.log(masdediez);
+        }
+
+        function PosPalabra(cadena, palabra) {
+            let resultat;
+            let germa;
+            do {
+
+                let palabras = cadena.split(" ");
+                let germa = palabras.indexOf(palabra);
+                console.log(germa);
+                resultat.push(germa);
+
+            } while (germa != -1);
+
+            console.log(resultat);
+        }
+
+        function primeraLarga(cadena){
+            console.log(cadena.split(" ").find(valor => valor.length > 8));
+        }
     </script>
-    
+
 </body>
+
 </html>
