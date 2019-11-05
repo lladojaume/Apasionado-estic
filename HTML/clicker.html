@@ -215,8 +215,8 @@
 
                 <button id="deckbuy"><img class="player" src="deck.jpg"></img></button>
                 <div class="tooltip">
-                    <p>Gabriel Deck: <a id="deck">0</a></p>
-                    <span class="tooltiptext">Cada Deck permet contractar 30 Reyes nous</span>
+                    <p>Gabriel Deck: <a id="deck">0/40</a></p>
+                    <span class="tooltiptext">Cada Deck anota 5 punts cada 10 segons</span>
                 </div>
                 <p class="price"><span id="PREUDECK"></span>€</p>
             </div>
@@ -234,8 +234,8 @@
 
                 <button id="taylorbuy"><img class="player" src="taylor.jpg"></img></button>
                 <div class="tooltip">
-                    <p>Jeffery Taylor: <a id="taylor">0</a></p>
-                    <span class="tooltiptext">Cada Taylor permet contractar 30 Reyes nous</span>
+                    <p>Jeffery Taylor: <a id="taylor">0/1</a></p>
+                    <span class="tooltiptext">Duplica el preu de venta dels punts</span>
                 </div>
                 <p class="price"><span id="PREUTAYLOR"></span>€</p>
             </div>
@@ -541,18 +541,19 @@
         let delaneys = 0;
         let clavers = 0;
         let heurtels = 0;
-        let doblecodigo = delaneys + clavers + heurtels;//quantitat de multiplicadors preu codi(1,2,3)
+        let doblecodigo = delaneys + clavers + heurtels + taylors;//quantitat de multiplicadors preu codi(1,2,3,4)
         let hangas = 1;//val 1 si no tenim compresión, 2 si la tenim
         let higginss = 0;
         let daviess = 0;
         let mirotics = 0;
         let reyess = 0;
         let capacitatThompkins = 30;
-        let thompkinss = 1
+        let thompkinss = 1;
         let mickeys = 0;
         let randolphs = 0;
         let decks = 0;
-        let causeurs = 0;
+        let capacitatCauseur = 40;
+        let causeurs = 1;
         let taylors = 0;
         let rudys = 0;
         let laprovittolas = 0;
@@ -581,8 +582,8 @@
         const PREUTHOMPKINS = 10000;
         const PREUMICKEY = 10000;
         const PREURANDOLPH = 1000;
-        const PREUDECK = 10000;
-        const PREUCAUSEUR = 10000;
+        let PREUDECK = 80;
+        const PREUCAUSEUR = 6000;
         const PREUTAYLOR = 10000;
         const PREURUDY = 10000;
         const PREULAPROVITTOLA = 10000;
@@ -655,28 +656,21 @@
         }
         function AvisarError(error) {
             document.getElementById("alerta").innerText = error;
+            alerta.style.backgroundColor = 'black';
             alerta.style.display = 'block';
             espera = setTimeout(TempsEspera, 3000);
         }
-        function AvisarDesbloqueig() {
+
+        //DESBLOQUEJAR JUGADORS
+        function Desbloquejar(desbloqueja) {
+            document.getElementById("quadre" + desbloqueja).style.display = "flex";
             document.getElementById("alerta").innerText = "Nova millora desbloquejada";
             alerta.style.backgroundColor = 'green';
             alerta.style.display = 'block';
             espera = setTimeout(TempsEspera, 3000);
         }
 
-        
 
-        //DESBLOQUEJAR JUGADORS
-        function Desbloquejar(desbloqueja) {
-            document.getElementById("quadre" + desbloqueja).style.display = "flex";
-        }
-
-        // function Desbloquejar(jugador, quantitat, desbloqueja) {
-        //     if (jugador == quantitat) {
-        //         document.getElementById("quadre" + desbloqueja).style.display = "flex";
-        //     }
-        // }
         function ActualitzarMoneder() {
             document.getElementById("wallet").innerHTML = Intl.NumberFormat("de-DE").format(walletEuros.toFixed(2));
             // setVariables();
@@ -684,8 +678,7 @@
         function IncrementBall() {
             if (ballNum < capacitatRibas * ribass || higginss == 1) {
                 ballNum = ballNum + Math.pow((Math.pow(10, mirotics)), randolphs + 1);
-                
-                // Desbloquejar(ballNum, 50, "pustovyi");
+
                 if (ballNum == 50) {
                     Desbloquejar("pustovyi");
                 }
@@ -697,7 +690,7 @@
         }
         function ActualizarPustovyi() {
             if (ballNum < capacitatRibas * ribass * hangas || higgins == 1) {
-                ballNum = ballNum + pustovyis * productivitatBarsa + reyess * productivitatMadrid;
+                ballNum = ballNum + pustovyis * productivitatBarsa + reyess * productivitatMadrid + decks * productivitatMadrid / 2;
             }
             else {
                 AvisarError("Has de comprar més Pau Ribas");
@@ -723,24 +716,36 @@
                 pustovyis++;
                 PREUPUSTOVYI++;
                 document.getElementById("PREUPUSTOVYI").innerText = PREUPUSTOVYI;
-                document.getElementById("quadrepustovyi").style.backgroundColor="green";
 
-                if(pustovyis==1){
-                    AvisarDesbloqueig();
+
+                if (pustovyis == 2) {
+                    Desbloquejar("deck");
+                }
+                if (pustovyis == 3) {
+                    Desbloquejar("pangos");
+                }
+                if (pustovyis == 10) {
                     Desbloquejar("reyes");
                 }
                 if (pustovyis == 15) {
                     Desbloquejar("mirotic");
                 }
-                // Debloquejar(pustovyis,15,mirotic);                
+                if(pustovyis==20){
+                    Desbloquejar("oriola");
+                }
+                if(pustovyis==25){
+                    Desbloquejar("ribas");
+                }
+
+                if(pustovyis==30){
+                    Desbloquejar("smits");
+                }
+
 
                 if (pustovyis == 500) {
                     // document.getElementById("jugadors").style.overflowY="scroll";   
-                    Desbloquejar("abrines");
-                    Desbloquejar("kuric");
-                    Desbloquejar("delaney");
-                    Desbloquejar("claver");
-                    Desbloquejar("heurtel");
+                    
+                    
                     Desbloquejar("hanga");
                     Desbloquejar("higgins");
                     Desbloquejar("davies");
@@ -831,6 +836,9 @@
                 if (walletEuros >= pustovyis * preuPangos) {
                     walletEuros = walletEuros - (pustovyis * preuPangos);
                     pangoss++;
+                    if(pangoss==1){
+                        Desbloquejar("abrines");
+                    }
                     preuPangos = preuPangos * 2;
                     productivitatBarsa = productivitatBarsa * 10;
                     // interval = interval / 10;
@@ -856,6 +864,10 @@
                     if (walletEuros >= PREUABRINES) {
                         walletEuros = walletEuros - PREUABRINES;
                         abriness++;
+                        if(abriness==1){
+                            Desbloquejar("kuric");
+                        }
+
                         productivitatBarsa = productivitatBarsa * 4;
                         // interval = interval / 4;
                         // clearInterval(timer);
@@ -883,6 +895,10 @@
                     if (walletEuros >= PREUKURIC) {
                         walletEuros = walletEuros - PREUKURIC;
                         kurics++;
+                        if(kurics==1){
+                            Desbloquejar("delaney");
+                    
+                        }
                         productivitatBarsa = productivitatBarsa * 50;
                         // interval = interval / 50;
                         // clearInterval(timer);
@@ -910,6 +926,9 @@
                     if (walletEuros >= PREUDELANEY) {
                         walletEuros = walletEuros - PREUDELANEY;
                         delaneys++;
+                        if(delaneys==1){
+                            Desbloquejar("claver");
+                        }
                         // clearInterval(timer);
                         // timer = setInterval(ActualizarPustovyi, 1000 * interval);
                         document.getElementById("delaney").innerHTML = Intl.NumberFormat("de-DE").format(delaneys);
@@ -935,6 +954,10 @@
                     if (walletEuros >= PREUCLAVER) {
                         walletEuros = walletEuros - PREUCLAVER;
                         clavers++;
+                        if(clavers==1){
+                            Desbloquejar("heurtel");
+
+                        }
                         // clearInterval(timer);
                         // timer = setInterval(ActualizarPustovyi, 1000 * interval);
                         document.getElementById("claver").innerHTML = Intl.NumberFormat("de-DE").format(clavers);
@@ -1110,6 +1133,7 @@
                 AvisarError("Et falten monedes. Preu " + PREUTHOMPKINS + "€");
             }
         }
+
         function BuyMickey() {
             if (mickeys < 1) {
                 if (walletEuros >= PREUMICKEY) {
@@ -1133,7 +1157,7 @@
                     randolphs++;
                     document.getElementById("randolph").innerHTML = Intl.NumberFormat("de-DE").format(randolphs);
                     ActualitzarMoneder();
-                    document.getElementById("quadrerandolph").style.backgroundColor="red";
+                    document.getElementById("quadrerandolph").style.backgroundColor = "red";
                 }
                 else {
                     AvisarError("Et falten monedes. Preu " + PREURANDOLPH + "€");
@@ -1143,11 +1167,23 @@
             }
         }
         function BuyDeck() {
-            if (walletEuros >= PREUDECK) {
+            if (walletEuros >= PREUDECK && reyess < capacitatCauseur * causeurs) {
                 walletEuros = walletEuros - PREUDECK;
                 decks++;
-                document.getElementById("deck").innerHTML = Intl.NumberFormat("de-DE").format(decks);
+                PREUDECK = PREUDECK + 10;
+                if(decks==3){
+                    Desbloquejar("tomic");
+                }                
+                if(decks==5){
+                    Desbloquejar("taylor");
+                }
+                if(decks==15){
+                    Desbloquejar("causeur");
+                }
+                document.getElementById("PREUDECK").innerHTML = PREUDECK;
+                document.getElementById("deck").innerHTML = Intl.NumberFormat("de-DE").format(decks) + "/" + capacitatCauseur * causeurs;
                 ActualitzarMoneder();
+
             }
             else {
                 AvisarError("Et falten monedes. Preu " + PREUDECK + "€");
@@ -1164,15 +1200,21 @@
                 AvisarError("Et falten monedes. Preu " + PREUCAUSEUR + "€");
             }
         }
+        //Incrementa preu pilota per 2
         function BuyTaylor() {
-            if (walletEuros >= PREUTAYLOR) {
-                walletEuros = walletEuros - PREUTAYLOR;
-                taylors++;
-                document.getElementById("taylor").innerHTML = Intl.NumberFormat("de-DE").format(taylors);
-                ActualitzarMoneder();
+            if (taylors < 1) {
+                if (walletEuros >= PREUTAYLOR) {
+                    walletEuros = walletEuros - PREUTAYLOR;
+                    taylors++;
+                    document.getElementById("taylor").innerHTML = Intl.NumberFormat("de-DE").format(taylors);
+                    ActualitzarMoneder();
+                }
+                else {
+                    AvisarError("Et falten monedes. Preu " + PREUTAYLOR + "€");
+                }
             }
             else {
-                AvisarError("Et falten monedes. Preu " + PREUTAYLOR + "€");
+                AvisarError("Només en pots tenir un!");
             }
         }
         function BuyRudy() {
