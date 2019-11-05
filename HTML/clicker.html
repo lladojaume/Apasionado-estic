@@ -540,6 +540,7 @@
         let delaneys = 0;
         let clavers = 0;
         let heurtels = 0;
+        let taylors = 0;
         let doblecodigo = delaneys + clavers + heurtels + taylors;//quantitat de multiplicadors preu codi(1,2,3,4)
         let hangas = 1;//val 1 si no tenim compresión, 2 si la tenim
         let higginss = 0;
@@ -553,7 +554,6 @@
         let decks = 0;
         let capacitatCauseur = 40;
         let causeurs = 1;
-        let taylors = 0;
         let rudys = 0;
         let laprovittolas = 0;
         let carrolls = 0;
@@ -1139,7 +1139,7 @@
         function BuyDeck() {
             if (walletEuros >= PREUDECK && reyess < capacitatCauseur * causeurs) {
                 walletEuros = walletEuros - PREUDECK;
-                
+
                 decks++;
                 
                 PREUDECK = PREUDECK + 10;
