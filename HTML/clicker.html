@@ -560,6 +560,7 @@
         let tavaress = 0;
         let llulls = 0;
         let campazzos = 0;
+        let start=false;
 
         //PREUS
         let PREUPUSTOVYI = 10;
@@ -678,8 +679,9 @@
             if (ballNum < capacitatRibas * ribass || higginss == 1) {
                 ballNum = ballNum + Math.pow((Math.pow(10, mirotics)), randolphs + 1);
 
-                if (ballNum == 50 && pustovyis==0 && walletEuros<5) {
+                if ((ballNum/10 + walletEuros) >= 5 && pustovyis==0 && !start) {
                     Desbloquejar("pustovyi");
+                    start=true;
                 }
             } else {
                 AvisarError("Has de comprar més Pau Ribas");
