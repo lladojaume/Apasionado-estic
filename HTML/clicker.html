@@ -192,7 +192,6 @@
                 <p class="price"><span id="PREUTHOMPKINS"></span>€</p>
             </div>
 
-            <!-- A PARTIR D'AQUÍ S'HA DE MIRAR -->
             <div class="quadre" id="quadremickey">
 
                 <button id="mickeybuy"><img class="player" src="mickey.jpg"></img></button>
@@ -244,7 +243,7 @@
                 <button id="rudybuy"><img class="player" src="rudy.jpg"></img></button>
                 <div class="tooltip">
                     <p>Rudy Fernández: <a id="rudy">0</a></p>
-                    <span class="tooltiptext">Cada Rudy permet contractar 30 Reyes nous</span>
+                    <span class="tooltiptext">No fa res</span>
                 </div>
                 <p class="price"><span id="PREURUDY"></span>€</p>
             </div>
@@ -253,7 +252,7 @@
                 <button id="laprovittolabuy"><img class="player" src="laprovittola.jpg"></img></button>
                 <div class="tooltip">
                     <p>Nico Laprovittola: <a id="laprovittola">0</a></p>
-                    <span class="tooltiptext">Cada Laprovittola permet contractar 30 Reyes nous</span>
+                    <span class="tooltiptext">No fa res</span>
                 </div>
                 <p class="price"><span id="PREULAPROVITTOLA"></span>€</p>
             </div>
@@ -262,7 +261,7 @@
                 <button id="carrollbuy"><img class="player" src="carroll.jpg"></img></button>
                 <div class="tooltip">
                     <p>Jaycee Carroll: <a id="carroll">0</a></p>
-                    <span class="tooltiptext">Cada Carroll permet contractar 30 Reyes nous</span>
+                    <span class="tooltiptext">No fa res</span>
                 </div>
                 <p class="price"><span id="PREUCARROLL"></span>€</p>
             </div>
@@ -271,7 +270,7 @@
                 <button id="tavaresbuy"><img class="player" src="tavares.jpg"></img></button>
                 <div class="tooltip">
                     <p>Walter Tavares: <a id="tavares">0</a></p>
-                    <span class="tooltiptext">Cada Tavares permet contractar 30 Reyes nous</span>
+                    <span class="tooltiptext">No fa res</span>
                 </div>
                 <p class="price"><span id="PREUTAVARES"></span>€</p>
             </div>
@@ -280,7 +279,7 @@
                 <button id="llullbuy"><img class="player" src="llull.jpg"></img></button>
                 <div class="tooltip">
                     <p>Sergio Llull: <a id="llull">0</a></p>
-                    <span class="tooltiptext">Cada Llull permet contractar 30 Reyes nous</span>
+                    <span class="tooltiptext">No fa res</span>
                 </div>
                 <p class="price"><span id="PREULLULL"></span>€</p>
             </div>
@@ -289,7 +288,7 @@
                 <button id="campazzobuy"><img class="player" src="campazzo.jpg"></img></button>
                 <div class="tooltip">
                     <p>Facundo Campazzo: <a id="campazzo">0</a></p>
-                    <span class="tooltiptext">Cada Campazzo permet contractar 30 Reyes nous</span>
+                    <span class="tooltiptext">No fa res</span>
                 </div>
                 <p class="price"><span id="PREUCAMPAZZO"></span>€</p>
             </div>
@@ -730,24 +729,18 @@
                 if (pustovyis == 15) {
                     Desbloquejar("mirotic");
                 }
-                if(pustovyis==20){
+                if (pustovyis == 20) {
                     Desbloquejar("oriola");
                 }
-                if(pustovyis==25){
+                if (pustovyis == 25) {
                     Desbloquejar("ribas");
                 }
 
-                if(pustovyis==30){
+                if (pustovyis == 30) {
                     Desbloquejar("smits");
                 }
-
-
-                if (pustovyis == 500) {
-                    // document.getElementById("jugadors").style.overflowY="scroll";   
-                    
-                    
-                    Desbloquejar("hanga");
-                    Desbloquejar("higgins");
+                if (pustovyis == 50) {
+                    // document.getElementById("jugadors").style.overflowY="scroll";  
                     Desbloquejar("davies");
                 }
                 document.getElementById("pustovyi").innerHTML = Intl.NumberFormat("de-DE").format(pustovyis) + "/" + 50 * smitss;
@@ -778,8 +771,11 @@
             if (walletEuros >= PREURIBAS) {
                 walletEuros = walletEuros - PREURIBAS;
                 ribass++;
+                if (ribass == 5) {
+                    Desbloquejar("hanga");
+                }
                 if (ribass == 31) {
-                    document.getElementById("quadrehiggins").style.display = "flex";
+                    Desbloquejar("higgins");
                 }
                 document.getElementById("ribas").innerHTML = Intl.NumberFormat("de-DE").format(ribass - 1);
                 ActualitzarMoneder();
@@ -836,7 +832,7 @@
                 if (walletEuros >= pustovyis * preuPangos) {
                     walletEuros = walletEuros - (pustovyis * preuPangos);
                     pangoss++;
-                    if(pangoss==1){
+                    if (pangoss == 1) {
                         Desbloquejar("abrines");
                     }
                     preuPangos = preuPangos * 2;
@@ -859,170 +855,147 @@
         //SCRUM
         //productivitatBarsa *4
         function BuyAbrines() {
-            if (pustovyis >= 500) {
-                if (abriness < 1) {
-                    if (walletEuros >= PREUABRINES) {
-                        walletEuros = walletEuros - PREUABRINES;
-                        abriness++;
-                        if(abriness==1){
-                            Desbloquejar("kuric");
-                        }
-
-                        productivitatBarsa = productivitatBarsa * 4;
-                        // interval = interval / 4;
-                        // clearInterval(timer);
-                        // timer = setInterval(ActualizarPustovyi, 1000 * interval);
-                        document.getElementById("abrines").innerHTML = Intl.NumberFormat("de-DE").format(abriness);
-                        ActualitzarMoneder();
+            if (abriness < 1) {
+                if (walletEuros >= PREUABRINES) {
+                    walletEuros = walletEuros - PREUABRINES;
+                    abriness++;
+                    if (abriness == 1) {
+                        Desbloquejar("kuric");
                     }
-                    else {
-                        AvisarError("Et falten monedes. Preu: " + PREUABRINES + "€");
-                    }
+                    productivitatBarsa = productivitatBarsa * 4;
+                    // interval = interval / 4;
+                    // clearInterval(timer);
+                    // timer = setInterval(ActualizarPustovyi, 1000 * interval);
+                    document.getElementById("abrines").innerHTML = Intl.NumberFormat("de-DE").format(abriness);
+                    ActualitzarMoneder();
                 }
                 else {
-                    AvisarError("Només en pots tenir un!");
+                    AvisarError("Et falten monedes. Preu: " + PREUABRINES + "€");
                 }
             }
             else {
-                AvisarError("Has de tenir 500 Pustovyis!");
+                AvisarError("Només en pots tenir un!");
             }
+
+
         }
         //CTO
         //productivitatBarsa *50
         function BuyKuric() {
-            if (pustovyis >= 500) {
-                if (kurics < 1) {
-                    if (walletEuros >= PREUKURIC) {
-                        walletEuros = walletEuros - PREUKURIC;
-                        kurics++;
-                        if(kurics==1){
-                            Desbloquejar("delaney");
-                    
-                        }
-                        productivitatBarsa = productivitatBarsa * 50;
-                        // interval = interval / 50;
-                        // clearInterval(timer);
-                        // timer = setInterval(ActualizarPustovyi, 1000 * interval);
-                        document.getElementById("kuric").innerHTML = Intl.NumberFormat("de-DE").format(kurics);
-                        ActualitzarMoneder();
+            if (kurics < 1) {
+                if (walletEuros >= PREUKURIC) {
+                    walletEuros = walletEuros - PREUKURIC;
+                    kurics++;
+                    if (kurics == 1) {
+                        Desbloquejar("delaney");
                     }
-                    else {
-                        AvisarError("Et falten monedes. Preu: " + PREUKURIC + "€");
-                    }
+                    productivitatBarsa = productivitatBarsa * 50;
+                    // interval = interval / 50;
+                    // clearInterval(timer);
+                    // timer = setInterval(ActualizarPustovyi, 1000 * interval);
+                    document.getElementById("kuric").innerHTML = Intl.NumberFormat("de-DE").format(kurics);
+                    ActualitzarMoneder();
                 }
                 else {
-                    AvisarError("Només en pots tenir un!");
+                    AvisarError("Et falten monedes. Preu: " + PREUKURIC + "€");
                 }
             }
             else {
-                AvisarError("Has de tenir 500 Pustovyis!");
+                AvisarError("Només en pots tenir un!");
             }
+
         }
         //COMERCIAL
         //PREU 1000€ INCREMENTA PREU PILOTA x2
         function BuyDelaney() {
-            if (pustovyis >= 500) {
-                if (delaneys < 1) {
-                    if (walletEuros >= PREUDELANEY) {
-                        walletEuros = walletEuros - PREUDELANEY;
-                        delaneys++;
-                        if(delaneys==1){
-                            Desbloquejar("claver");
-                        }
-                        // clearInterval(timer);
-                        // timer = setInterval(ActualizarPustovyi, 1000 * interval);
-                        document.getElementById("delaney").innerHTML = Intl.NumberFormat("de-DE").format(delaneys);
-                        ActualitzarMoneder();
+
+            if (delaneys < 1) {
+                if (walletEuros >= PREUDELANEY) {
+                    walletEuros = walletEuros - PREUDELANEY;
+                    delaneys++;
+                    if (delaneys == 1) {
+                        Desbloquejar("claver");
                     }
-                    else {
-                        AvisarError("Et falten monedes. Preu: " + PREUDELANEY + "€");
-                    }
+                    // clearInterval(timer);
+                    // timer = setInterval(ActualizarPustovyi, 1000 * interval);
+                    document.getElementById("delaney").innerHTML = Intl.NumberFormat("de-DE").format(delaneys);
+                    ActualitzarMoneder();
                 }
                 else {
-                    AvisarError("Només en pots tenir un!");
+                    AvisarError("Et falten monedes. Preu: " + PREUDELANEY + "€");
                 }
             }
             else {
-                AvisarError("Has de tenir 500 Pustovyis!");
+                AvisarError("Només en pots tenir un!");
             }
+
         }
         //CAMPAÑA
         //PREU 2000€ INCREMENTA PREU PILOTA x2
         function BuyClaver() {
-            if (pustovyis >= 500) {
-                if (clavers < 1) {
-                    if (walletEuros >= PREUCLAVER) {
-                        walletEuros = walletEuros - PREUCLAVER;
-                        clavers++;
-                        if(clavers==1){
-                            Desbloquejar("heurtel");
 
-                        }
-                        // clearInterval(timer);
-                        // timer = setInterval(ActualizarPustovyi, 1000 * interval);
-                        document.getElementById("claver").innerHTML = Intl.NumberFormat("de-DE").format(clavers);
-                        ActualitzarMoneder();
+            if (clavers < 1) {
+                if (walletEuros >= PREUCLAVER) {
+                    walletEuros = walletEuros - PREUCLAVER;
+                    clavers++;
+                    if (clavers == 1) {
+                        Desbloquejar("heurtel");
                     }
-                    else {
-                        AvisarError("Et falten monedes. Preu: " + PREUCLAVER + "€");
-                    }
+                    // clearInterval(timer);
+                    // timer = setInterval(ActualizarPustovyi, 1000 * interval);
+                    document.getElementById("claver").innerHTML = Intl.NumberFormat("de-DE").format(clavers);
+                    ActualitzarMoneder();
                 }
                 else {
-                    AvisarError("Només en pots tenir un!");
+                    AvisarError("Et falten monedes. Preu: " + PREUCLAVER + "€");
                 }
             }
             else {
-                AvisarError("Has de tenir 500 Pustovyis!");
+                AvisarError("Només en pots tenir un!");
             }
+
         }
         //AGENCIA
         //PREU 5000€ INCREMENTA PREU PILOTA x2
         function BuyHeurtel() {
-            if (pustovyis >= 500) {
-                if (heurtels < 1) {
-                    if (walletEuros >= PREUHEURTEL) {
-                        walletEuros = walletEuros - PREUHEURTEL;
-                        heurtels++;
-                        // clearInterval(timer);
-                        // timer = setInterval(ActualizarPustovyi, 1000 * interval);
-                        document.getElementById("heurtel").innerHTML = Intl.NumberFormat("de-DE").format(heurtels);
-                        ActualitzarMoneder();
-                    }
-                    else {
-                        AvisarError("Et falten monedes. Preu: " + PREUHEURTEL + "€");
-                    }
+
+            if (heurtels < 1) {
+                if (walletEuros >= PREUHEURTEL) {
+                    walletEuros = walletEuros - PREUHEURTEL;
+                    heurtels++;
+                    // clearInterval(timer);
+                    // timer = setInterval(ActualizarPustovyi, 1000 * interval);
+                    document.getElementById("heurtel").innerHTML = Intl.NumberFormat("de-DE").format(heurtels);
+                    ActualitzarMoneder();
                 }
                 else {
-                    AvisarError("Només en pots tenir un!");
+                    AvisarError("Et falten monedes. Preu: " + PREUHEURTEL + "€");
                 }
             }
             else {
-                AvisarError("Has de tenir 500 Pustovyis!");
+                AvisarError("Només en pots tenir un!");
             }
+
         }
         //COMPRESION
         //PREU 1000€ INCREMENTA els discos incrementen capacitat per dos. per tant podem multiplicar per dos els discos i actualitzar els que tinguem comprats i els nous que comprem
         function BuyHanga() {
-            if (pustovyis >= 500) {
-                if (hangas < 1) {
-                    if (walletEuros >= PREUHANGA) {
-                        walletEuros = walletEuros - PREUHANGA;
-                        hangas++;
-                        // clearInterval(timer);
-                        // timer = setInterval(ActualizarPustovyi, 1000 * interval);
-                        document.getElementById("hanga").innerHTML = Intl.NumberFormat("de-DE").format(hangas - 1);
-                        ActualitzarMoneder();
-                    }
-                    else {
-                        AvisarError("Et falten monedes. Preu: " + PREUHANGA + "€");
-                    }
+
+            if (hangas < 1) {
+                if (walletEuros >= PREUHANGA) {
+                    walletEuros = walletEuros - PREUHANGA;
+                    hangas++;
+                    // clearInterval(timer);
+                    // timer = setInterval(ActualizarPustovyi, 1000 * interval);
+                    document.getElementById("hanga").innerHTML = Intl.NumberFormat("de-DE").format(hangas - 1);
+                    ActualitzarMoneder();
                 }
                 else {
-                    AvisarError("Només en pots tenir un!");
+                    AvisarError("Et falten monedes. Preu: " + PREUHANGA + "€");
                 }
             }
             else {
-                AvisarError("Has de tenir 500 Pustovyis!");
+                AvisarError("Només en pots tenir un!");
             }
         }
         //HIGGINS
@@ -1051,26 +1024,23 @@
         //DAVIES
         //DUPLICA productivitatBarsa(DUPLICA PUNTS CADA 10 SEGONS)
         function BuyDavies() {
-            if (pustovyis >= 500) {
-                if (daviess < 1) {
-                    if (walletEuros >= PREUDAVIES) {
-                        walletEuros = walletEuros - PREUDAVIES;
-                        daviess++;
-                        productivitatBarsa = productivitatBarsa * 2;
-                        document.getElementById("davies").innerHTML = Intl.NumberFormat("de-DE").format(daviess);
-                        ActualitzarMoneder();
-                    }
-                    else {
-                        AvisarError("Et falten monedes. Preu: " + PREUDAVIES + "€");
-                    }
+
+            if (daviess < 1) {
+                if (walletEuros >= PREUDAVIES) {
+                    walletEuros = walletEuros - PREUDAVIES;
+                    daviess++;
+                    productivitatBarsa = productivitatBarsa * 2;
+                    document.getElementById("davies").innerHTML = Intl.NumberFormat("de-DE").format(daviess);
+                    ActualitzarMoneder();
                 }
                 else {
-                    AvisarError("Només en pots tenir un!");
+                    AvisarError("Et falten monedes. Preu: " + PREUDAVIES + "€");
                 }
             }
             else {
-                AvisarError("Has de tenir 500 Pustovyis!");
+                AvisarError("Només en pots tenir un!");
             }
+
         }
         //MIROTIC
         //CADA CLIC VAL 10
@@ -1101,16 +1071,17 @@
             if (walletEuros >= PREUREYES && reyess < capacitatThompkins * thompkinss) {
                 walletEuros = walletEuros - PREUREYES;
                 reyess++;
+
+                if(reyess==10){
+                    Desbloquejar("mickey");
+                }
+                if (reyess == 20) {
+                    Desbloquejar("thompkins");
+                }
+
                 PREUREYES = PREUREYES + 10;
                 document.getElementById("PREUREYES").innerHTML = PREUREYES;
-                // if (reyess == 500) {
-                //     document.getElementById("quadreabrines").style.display = "flex";
-                //     document.getElementById("quadrekuric").style.display = "flex";
-                //     document.getElementById("quadredelaney").style.display = "flex";
-                //     document.getElementById("quadreclaver").style.display = "flex";
-                //     document.getElementById("quadreheurtel").style.display = "flex";
-                //     document.getElementById("quadrehanga").style.display = "flex";
-                // }
+                
                 document.getElementById("reyes").innerHTML = Intl.NumberFormat("de-DE").format(reyess) + "/" + capacitatThompkins * thompkinss;
                 document.getElementById("preuPangos").innerHTML = preuPangos * pustovyis;
                 ActualitzarMoneder();
@@ -1157,7 +1128,6 @@
                     randolphs++;
                     document.getElementById("randolph").innerHTML = Intl.NumberFormat("de-DE").format(randolphs);
                     ActualitzarMoneder();
-                    document.getElementById("quadrerandolph").style.backgroundColor = "red";
                 }
                 else {
                     AvisarError("Et falten monedes. Preu " + PREURANDOLPH + "€");
@@ -1169,15 +1139,20 @@
         function BuyDeck() {
             if (walletEuros >= PREUDECK && reyess < capacitatCauseur * causeurs) {
                 walletEuros = walletEuros - PREUDECK;
+                
                 decks++;
+                
                 PREUDECK = PREUDECK + 10;
-                if(decks==3){
+                if (decks == 3) {
                     Desbloquejar("tomic");
-                }                
-                if(decks==5){
+                }
+                if (decks == 5) {
                     Desbloquejar("taylor");
                 }
-                if(decks==15){
+                if(decks==10){
+                    Desbloquejar("randolph");
+                }
+                if (decks == 15) {
                     Desbloquejar("causeur");
                 }
                 document.getElementById("PREUDECK").innerHTML = PREUDECK;
@@ -1217,6 +1192,8 @@
                 AvisarError("Només en pots tenir un!");
             }
         }
+
+        //A PARTIR D'AQUÍ NO FAN RES
         function BuyRudy() {
             if (walletEuros >= PREURUDY) {
                 walletEuros = walletEuros - PREURUDY;
