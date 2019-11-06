@@ -67,8 +67,7 @@
         opacity: 0.9;
     }
 
-    /* hola germa */
-    /* prova des de casa */
+    
     .player {
         width: 240px;
         height: 150px;
@@ -522,6 +521,7 @@
         var btnBuyTavares = document.getElementById("tavaresbuy");
         var btnBuyLlull = document.getElementById("llullbuy");
         var btnBuyCampazzo = document.getElementById("campazzobuy");
+
         let productivitatBarsa = 1;
         let productivitatMadrid = 10;
         let interval = 10;//Cada 10 segons el pustovyi fa una pilota
@@ -591,6 +591,7 @@
         const PREUTAVARES = 10000;
         const PREULLULL = 10000;
         const PREUCAMPAZZO = 10000;
+
         //IMPRIMIR PREU
         document.getElementById("PREUPUSTOVYI").innerText = PREUPUSTOVYI;
         document.getElementById("PREUSMITS").innerText = PREUSMITS;
@@ -620,6 +621,7 @@
         document.getElementById("PREUTAVARES").innerText = PREUTAVARES;
         document.getElementById("PREULLULL").innerText = PREULLULL;
         document.getElementById("PREUCAMPAZZO").innerText = PREUCAMPAZZO;
+
         btnBallCreator.addEventListener("click", IncrementBall);
         btnBallSeller.addEventListener("click", SellBall);
         btnBuyPustovy.addEventListener("click", BuyPustovy);
@@ -742,7 +744,6 @@
                     Desbloquejar("smits");
                 }
                 if (pustovyis == 50) {
-                    // document.getElementById("jugadors").style.overflowY="scroll";  
                     Desbloquejar("davies");
                 }
                 document.getElementById("pustovyi").innerHTML = Intl.NumberFormat("de-DE").format(pustovyis) + "/" + 50 * smitss;
@@ -813,9 +814,7 @@
                     walletEuros = walletEuros - PREUTOMIC;
                     tomics++;
                     productivitatBarsa = productivitatBarsa * 2;
-                    // interval = interval / 2;
-                    // clearInterval(timer);
-                    // timer = setInterval(ActualizarPustovyi, 1000 * interval);
+                    
                     document.getElementById("tomic").innerHTML = Intl.NumberFormat("de-DE").format(tomics);
                     ActualitzarMoneder();
                 }
@@ -839,9 +838,7 @@
                     }
                     preuPangos = preuPangos * 2;
                     productivitatBarsa = productivitatBarsa * 10;
-                    // interval = interval / 10;
-                    // clearInterval(timer);
-                    // timer = setInterval(ActualizarPustovyi, 1000 * interval);
+                    
                     document.getElementById("preuPangos").innerText = preuPangos * pustovyis;
                     document.getElementById("pangos").innerHTML = Intl.NumberFormat("de-DE").format(pangoss);
                     ActualitzarMoneder();
@@ -865,9 +862,7 @@
                         Desbloquejar("kuric");
                     }
                     productivitatBarsa = productivitatBarsa * 4;
-                    // interval = interval / 4;
-                    // clearInterval(timer);
-                    // timer = setInterval(ActualizarPustovyi, 1000 * interval);
+                    
                     document.getElementById("abrines").innerHTML = Intl.NumberFormat("de-DE").format(abriness);
                     ActualitzarMoneder();
                 }
@@ -892,9 +887,7 @@
                         Desbloquejar("delaney");
                     }
                     productivitatBarsa = productivitatBarsa * 50;
-                    // interval = interval / 50;
-                    // clearInterval(timer);
-                    // timer = setInterval(ActualizarPustovyi, 1000 * interval);
+                    
                     document.getElementById("kuric").innerHTML = Intl.NumberFormat("de-DE").format(kurics);
                     ActualitzarMoneder();
                 }
@@ -918,8 +911,7 @@
                     if (delaneys == 1) {
                         Desbloquejar("claver");
                     }
-                    // clearInterval(timer);
-                    // timer = setInterval(ActualizarPustovyi, 1000 * interval);
+                    
                     document.getElementById("delaney").innerHTML = Intl.NumberFormat("de-DE").format(delaneys);
                     ActualitzarMoneder();
                 }
@@ -943,8 +935,7 @@
                     if (clavers == 1) {
                         Desbloquejar("heurtel");
                     }
-                    // clearInterval(timer);
-                    // timer = setInterval(ActualizarPustovyi, 1000 * interval);
+                   
                     document.getElementById("claver").innerHTML = Intl.NumberFormat("de-DE").format(clavers);
                     ActualitzarMoneder();
                 }
@@ -965,8 +956,7 @@
                 if (walletEuros >= PREUHEURTEL) {
                     walletEuros = walletEuros - PREUHEURTEL;
                     heurtels++;
-                    // clearInterval(timer);
-                    // timer = setInterval(ActualizarPustovyi, 1000 * interval);
+                    
                     document.getElementById("heurtel").innerHTML = Intl.NumberFormat("de-DE").format(heurtels);
                     ActualitzarMoneder();
                 }
@@ -987,8 +977,7 @@
                 if (walletEuros >= PREUHANGA) {
                     walletEuros = walletEuros - PREUHANGA;
                     hangas++;
-                    // clearInterval(timer);
-                    // timer = setInterval(ActualizarPustovyi, 1000 * interval);
+                    
                     document.getElementById("hanga").innerHTML = Intl.NumberFormat("de-DE").format(hangas - 1);
                     ActualitzarMoneder();
                 }

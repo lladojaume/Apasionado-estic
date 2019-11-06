@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let pagaExtra = true;
+
+        // Generación de la promesa
+        let nuevoTelefono = new Promise(
+            function (resolve, reject) {
+                if (pagaExtra) {
+                    var telefono = {
+                        marca: 'Samsung',
+                        color: 'black'
+                    };
+                    resolve(telefono); // fulfilled
+                } else {
+                    var razon = new Error('Sin paga extra');
+                    reject(razon); // reject
+                }
+
+            }
+        );
+
+        //Consumir la promesa
+
+        let comprar = function () {
+            nuevoTelefono.then(
+                //La promesa se ha cumplido
+                function (fulfilled) {
+                    console.log(fulfilled);
+                }
+            ).catch(
+                //La promesa no se ha cumplido
+                function (error) {
+                    console.log(error);
+                }
+            )
+        }
+        comprar();
+    </script>
+
+</body>
+
+</html>
