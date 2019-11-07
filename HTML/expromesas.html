@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,29 +8,35 @@
     <title>Document</title>
 </head>
 <style>
-    .imagen{
-        display:none;
-        background-image: url(enlace);       
+    .imagen {
+        display: none;
+        background-image: url(enlace);
     }
-
 </style>
+
 <body>
-        <div id="imagen"></div>
+    <div id="imagen"></div>
 
     <script>
-        let existe=true;
-        function CargarImagen(enlace){
-            if (existe) {
-                document.getElementById("imagen").style.display="flex";               
-               resolve("Hola amics"); // fulfilled
-           } else {
-               var razon = new Error('Imagen no encontrada');
-               reject(razon); // reject
-           }
-
+        function init(url) {
+            let exist = new Promise(function (resolve, reject) {
+                let imagen = new Image();
+                imagen.addEventListener("load", () => resolve("correcto"));
+                imagen.addEventListener("error", () => reject("error"));
+                imagen.src = url;
+            }
+            );
+            exist.then(function (fulfilled) {
+                console.log(fulfilled);
+                document.getElementById("imagen").src = url;
+            }).catch(function (error) {
+                console.log(error);
+            }
+            )
         }
     </script>
 
-    
+
 </body>
+
 </html>
