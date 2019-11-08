@@ -5,24 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
+    <title>Poker</title>
+
 </head>
 <style>
     body {
         width: 100%;
         height: 100%;
+        background-color: green;
+        overflow: hidden;
     }
 
     #taula {
         width: 1500px;
-        height: 700px;
-        background-color: green;
+        height: 500px;
+
         display: flex;
-        border-radius: 20px;
+
     }
 
     .jugador {
@@ -31,27 +30,96 @@
         background-color: red;
         margin: 25px;
         border-radius: 20px;
+        border-style: solid;
+        border-color: black;
     }
 
     #avatar {
-        height: 250px;
-        background-color: yellow;
+        height: 220px;
+        justify-content: center;
+        display: flex;
+
     }
 
+    .foto {
+        align-items: center;
+        border-style: solid;
+        border-color: yellow;
+        width: 200px;
+        height: 200px;
+        margin-top: 10px;
+    }
+
+    #img0 {
+        width: 100%;
+        height: 100%;
+    }
+
+    .nom {
+        text-align: center;
+        font-family: Verdana;
+        font-size: 20px;
+        font-weight: bold;
+
+    }
+
+
+    #img1 {
+        width: 100%;
+        height: 100%;
+    }
+
+
+    #img2 {
+        width: 100%;
+        height: 100%;
+    }
+
+    #img3 {
+        width: 100%;
+        height: 100%;
+    }
 
     #deck {
         display: flex;
+        margin-top: 30px;
+        justify-content: space-around;
     }
 
 
-    #carta {
-        background-color: white;
-        width: 45px;
-        height: 75px;
+    .carta {
+        background-color: red;
+        width: 55px;
+        height: 85px;
         margin: 5px;
         display: flex;
         border-radius: 5px;
+        border-color: red;
         justify-content: space-around;
+    }
+
+    #gif {
+        width: 100px;
+        height: 200px;
+        visibility: hidden;
+        margin-left:42%;
+        justify-content: center;
+    }
+
+    button {
+        border: none;
+        padding: 15px 32px;
+        text-align: center;
+        display: inline-block;
+        font-size: 16px;
+        background-color: yellow;
+    }
+
+    #girar{
+        visibility: hidden;
+    }
+    #repartir{
+        visibility: hidden;
     }
 </style>
 
@@ -59,59 +127,188 @@
     <div id="taula">
         <div class="jugador">
             <div id="avatar">
-                <img id="foto" src="https://es.learnlayout.com/images/logo.png" />
-                <p id="nom">JUGADOR 1</p>
+                <div class="foto"><img id="img0" alt="" /></div>
+            </div>
+            <div class="nom">
+                <p id="p0">CPU</p>
             </div>
             <div id="deck">
-                <div id="carta"></div>
-                <div id="carta"></div>
-                <div id="carta"></div>
-                <div id="carta"></div>
-                <div id="carta"></div>
+                <div><img class="carta" id="carta1"></img></div>
+                <div><img class="carta" id="carta2"></img></div>
+                <div><img class="carta" id="carta3"></img></div>
+                <div><img class="carta" id="carta4"></img></div>
+                <div><img class="carta" id="carta5"></img></div>
             </div>
         </div>
         <div class="jugador">
             <div id="avatar">
-                <img id="foto" src="https://es.learnlayout.com/images/logo.png" />
-                <p id="nom">JUGADOR 1</p>
+                <div class="foto"><img id="img1" alt="" /></div>
+
+            </div>
+            <div class="nom">
+                <p id="p1">CPU</p>
             </div>
             <div id="deck">
-                <div id="carta"></div>
-                <div id="carta"></div>
-                <div id="carta"></div>
-                <div id="carta"></div>
-                <div id="carta"></div>
+                <div><img class="carta" id="carta6"></img></div>
+                <div><img class="carta" id="carta7"></img></div>
+                <div><img class="carta" id="carta8"></img></div>
+                <div><img class="carta" id="carta9"></img></div>
+                <div><img class="carta" id="carta10"></img></div>
             </div>
         </div>
         <div class="jugador">
             <div id="avatar">
-                <img id="foto" src="https://es.learnlayout.com/images/logo.png" />
-                <p id="nom">JUGADOR 1</p>
+                <div class="foto"><img id="img2" alt="" /></div>
+
+            </div>
+            <div class="nom">
+                <p id="p2">Robot</p>
             </div>
             <div id="deck">
-                <div id="carta"></div>
-                <div id="carta"></div>
-                <div id="carta"></div>
-                <div id="carta"></div>
-                <div id="carta"></div>
+                <div><img class="carta" id="carta11"></img></div>
+                <div><img class="carta" id="carta12"></img></div>
+                <div><img class="carta" id="carta13"></img></div>
+                <div><img class="carta" id="carta14"></img></div>
+                <div><img class="carta" id="carta15"></img></div>
             </div>
         </div>
         <div class="jugador">
             <div id="avatar">
-                <img id="foto" src="https://es.learnlayout.com/images/logo.png" />
-                <p id="nom">JUGADOR 1</p>
+                <div class="foto"><img id="img3" alt="" /></div>
+
+            </div>
+            <div class="nom">
+                <p id="p3">Tu</p>
             </div>
             <div id="deck">
-                <div id="carta"></div>
-                <div id="carta"></div>
-                <div id="carta"></div>
-                <div id="carta"></div>
-                <div id="carta"></div>
+                <div><img class="carta" id="carta16"></img></div>
+                <div><img class="carta" id="carta17"></img></div>
+                <div><img class="carta" id="carta18"></img></div>
+                <div><img class="carta" id="carta19"></img></div>
+                <div><img class="carta" id="carta20"></img></div>
             </div>
         </div>
     </div>
+    
+    <button id="repartir">REPARTIR</button>
+
+    <button id="nous">NOUS JUGADORS</button>
+    <button id="girar">GIRAR</button>
+
+    
+    <div id="gif"><img src="gif.gif" width="180" height="180"></div>
+
 
     <script>
+
+        repartir.addEventListener("click", RepartirCartes);
+        girar.addEventListener("click", NouMazo);
+        nous.addEventListener("click", JugadorsNous);
+
+        function RepartirCartes(){
+            Gif();
+            for(let i=1; i<=20;i++){
+                document.getElementById("carta"+i).src="trasero.jpg";
+            }
+            document.getElementById("girar").style.visibility="visible";
+        }
+
+        function TempsEspera() {
+            gif.style.visibility = 'hidden';
+        }
+        function Gif() {
+            gif.style.visibility = 'visible';
+            espera = setTimeout(TempsEspera, 3000);
+        }        
+
+        function JugadorsNous() {
+            Aleatorios();
+            Robot();
+            Avatar();
+            for(let i=1; i<=20;i++){
+                document.getElementById("carta"+i).src="rojo.jpg";
+            }
+            document.getElementById("repartir").style.visibility="visible";
+            document.getElementById("girar").style.visibility="none";
+
+
+        }
+        function NouMazo() {
+            fetch('https://deckofcardsapi.com/api/deck/new/shuffle/')
+                .then(response => response.json())
+                .then(data => mazo(data))
+                .catch(function (err) {
+                    console.log('Fetch Error :-S', err);
+                });
+                document.getElementById("girar").style.visibility="hidden";
+
+        }
+
+        function mazo(data) {
+            console.log(data);
+            let id = data.deck_id;
+            fetch('https://deckofcardsapi.com/api/deck/' + id + '/draw/?count=20')
+                .then(response => response.json())
+                .then(hola => cartes(hola))
+                .catch(function (err) {
+                    console.log('Fetch Error :-S', err);
+                });
+        }
+
+        function cartes(hola) {
+            let count = 1;
+            console.log(hola);
+            hola.cards.forEach(element => {
+                document.getElementById("carta" + count).src = element.image;
+                count++;
+            });
+        }
+
+        function Aleatorios() {
+            fetch('https://randomuser.me/api/?results=2')
+                .then(response => response.json())
+                .then(data => cara(data))
+                .catch(function (err) {
+                    console.log('Fetch Error :-S', err);
+                });
+        }
+
+
+        function cara(data) {
+            let count = 0;
+            console.log(data);
+            data.results.forEach(element => {
+                document.getElementById("p" + count).innerText = element.name['first'];
+                document.getElementById("img" + count).src = element.picture['large'];
+                count++;
+            });
+        }
+        function Robot() {
+            id = Math.random();
+            fetch('https://robohash.org/')
+                .then(response => response.blob())
+                .then(data => cararobot('https://robohash.org/' + id))
+                .catch(function (err) {
+                    console.log('Fetch Error :-S', err);
+                });
+        }
+        function cararobot(element) {
+            document.getElementById("img2").src = element;
+        }
+        function Avatar() {
+            id = Math.random();
+            fetch('https://api.adorable.io/avatars/200/' + id)
+                .then(response => response.blob())
+                .then(data => caraavatar('https://api.adorable.io/avatars/200/' + id))
+                .catch(function (err) {
+                    console.log('Fetch Error :-S', err);
+                });
+        }
+
+        function caraavatar(element) {
+            document.getElementById("img3").src = element;
+        }
+
 
     </script>
 </body>
