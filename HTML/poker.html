@@ -102,7 +102,7 @@
         width: 100px;
         height: 200px;
         visibility: hidden;
-        margin-left:42%;
+        margin-left: 42%;
         justify-content: center;
     }
 
@@ -115,10 +115,11 @@
         background-color: yellow;
     }
 
-    #girar{
+    #girar {
         visibility: hidden;
     }
-    #repartir{
+
+    #repartir {
         visibility: hidden;
     }
 </style>
@@ -189,13 +190,13 @@
             </div>
         </div>
     </div>
-    
+
     <button id="repartir">REPARTIR</button>
 
     <button id="nous">NOUS JUGADORS</button>
     <button id="girar">GIRAR</button>
 
-    
+
     <div id="gif"><img src="gif.gif" width="180" height="180"></div>
 
 
@@ -205,12 +206,12 @@
         girar.addEventListener("click", NouMazo);
         nous.addEventListener("click", JugadorsNous);
 
-        function RepartirCartes(){
+        function RepartirCartes() {
             Gif();
-            for(let i=1; i<=20;i++){
-                document.getElementById("carta"+i).src="trasero.jpg";
+            for (let i = 1; i <= 20; i++) {
+                document.getElementById("carta" + i).src = "trasero.jpg";
             }
-            document.getElementById("girar").style.visibility="visible";
+            document.getElementById("girar").style.visibility = "visible";
         }
 
         function TempsEspera() {
@@ -219,17 +220,17 @@
         function Gif() {
             gif.style.visibility = 'visible';
             espera = setTimeout(TempsEspera, 3000);
-        }        
+        }
 
         function JugadorsNous() {
             Aleatorios();
             Robot();
             Avatar();
-            for(let i=1; i<=20;i++){
-                document.getElementById("carta"+i).src="rojo.jpg";
+            for (let i = 1; i <= 20; i++) {
+                document.getElementById("carta" + i).src = "rojo.jpg";
             }
-            document.getElementById("repartir").style.visibility="visible";
-            document.getElementById("girar").style.visibility="none";
+            document.getElementById("repartir").style.visibility = "visible";
+            document.getElementById("girar").style.visibility = "none";
 
 
         }
@@ -240,7 +241,7 @@
                 .catch(function (err) {
                     console.log('Fetch Error :-S', err);
                 });
-                document.getElementById("girar").style.visibility="hidden";
+            document.getElementById("girar").style.visibility = "hidden";
 
         }
 
