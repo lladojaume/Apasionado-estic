@@ -10,32 +10,35 @@
 
 
 <body>
+    <button id="btnCreate">CREAR</button>
     <ul id="ul"></ul>
 
 
-    <script>
+    <script type="module">
+        import {getJSON, postJSON, putJSON, deleteJSON} from './fetchsdelfetchapi.js';
+
         GetLinies();
         function GetLinies() {
-            document.getElementById("ul").innerHTML="";
-            fetch("https://localhost:44388/api/Lineas")
+            document.getElementById("ul").innerHTML = "";
+
+            document.getElementById("btnCreate").addEventListener("click", crearTarea);
+
+            getJSON("https://localhost:44388/api/Lineas")
                 .then(resp => resp.json())
                 .then(data => {
                     for (linia of data) {
                         let li = document.createElement("li");
-                        li.appendChild(document.createTextNode(linia.id+"     "+linia.servicio + "-" + linia.precio + "-" + linia.fecha));
-
-                        let btnCreate = document.createElement("button"); // Crear botón eliminar
-                        btnCreate.innerHTML = "Crear";
-                        li.appendChild(btnCreate);
-                        btnCreate.addEventListener("click", function () { crearTarea() });
+                        li.appendChild(document.createTextNode(linia.id + "     " + linia.servicio + "-" + linia.precio + "-" + linia.fecha));
+                        
+                        
                         let btnUpdate = document.createElement("button"); // Crear botón eliminar
                         btnUpdate.innerHTML = "Modificar";
-                        btnUpdate.value=linia.id
+                        btnUpdate.value = linia.id
                         li.appendChild(btnUpdate);
                         btnUpdate.addEventListener("click", function () { modificarTarea(btnUpdate.value) });
                         let btnDelete = document.createElement("button"); // Crear botón eliminar
                         btnDelete.innerHTML = "Eliminar";
-                        btnDelete.value=linia.id;
+                        btnDelete.value = linia.id;
                         li.appendChild(btnDelete);
                         btnDelete.addEventListener("click", function () { borrarTarea(btnDelete.value) });
 
@@ -46,50 +49,32 @@
 
 
         function crearTarea() {
-            let linea = { servicio: "Intentem fer coses", precio: 8, hojaservicioid: 1 };
-            let params = {
-                method: 'POST',
-                body: JSON.stringify(linea),
-                headers: {
-                    "Content-type": "application/json; charset=UTF-8"
-                }
-            };
+            document.getElementById("ul").innerHTML = "";
 
-            fetch('https://localhost:44388/api/Lineas', params)
-                .then(response => response.json())
-                .then(json => GetLinies())
+
+            let linea = { servicio: "Intentem fer coses", precio: 8, hojaservicioid: 1 };
+            postJSON('https://localhost:44388/api/Lineas', linea)
+                .then(data => console.log(data))
                 .catch(error => console.log(error));
 
         }
 
         function modificarTarea(id) {
-            linea = { id: id, servicio: "Intentem fer modificacions", precio: 45, hojaservicioid:4 };
-            params = {
-                method: 'PUT',
-                body: JSON.stringify(linea),
-                headers: {
-                    "Content-type": "application/json; charset=UTF-8"
-                }
-            };
-            fetch('https://localhost:44388/api/Lineas/'+id, params)
-                .then(response => response.json())
-                .then(json => GetLinies())
+            linea = { id: id, servicio: "Intentem fer modificacions", precio: 45, hojaservicioid: 4 };
+
+            putJSON('https://localhost:44388/api/Lineas/' + id, linea)
+                .then(data => console.log(data))
                 .catch(error => console.log(error));
-               
+
 
         }
 
         function borrarTarea(id) {
-            params = {
-                method: 'DELETE',
-                headers: {
-                    "Content-type": "application/json; charset=UTF-8"
-                }
-            };
-            fetch('https://localhost:44388/api/Lineas/'+id, params)
-                .then(response => response.json())
-                .then(json => GetLinies())
+
+            deleteJSON('https://localhost:44388/api/Lineas/' + id)
+                .then(data => console.log(data))
                 .catch(error => console.log(error));
+
 
         }
 

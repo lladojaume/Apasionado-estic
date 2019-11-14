@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <title>Document</title>
+</head>
+
+<style>
+    body {
+        padding: 2%;
+    }
+
+    .container {
+        padding: 2rem 0rem;
+    }
+
+    h4 {
+        margin: 2rem 0rem 1rem;
+    }
+
+    div {
+        margin-bottom: 2%;
+    }
+</style>
+
+
+<body>
+
+    <div>
+        <h4>Introdueix dades per crear o modificar</h4>
+        <p>Servicio</p>
+        <input id="serviciointro"></input>
+        <p>Precio</p>
+        <input id="preciointro"></input>
+        <p>Id Hoja Servicio</p>
+        <input id="hojaidintro"></input>
+        <p></p>
+        <button id="btnCreate">CREAR</button>
+    </div>
+
+
+    <h3>LÍNIES</h1>
+        <ul id="ul" class="list-group"></ul>
+
+
+
+        <script>
+            GetLinies();
+            function GetLinies() {
+                document.getElementById("ul").innerHTML = "";
+                document.getElementById("btnCreate").addEventListener("click", crearTarea);
+
+                fetch("https://localhost:44388/api/Lineas")
+                    .then(resp => resp.json())
+                    .then(data => {
+                        for (linia of data) {
+                            let li = document.createElement("li");
+                            li.classList.add("list-group-item");
+                            li.appendChild(document.createTextNode(linia.id + "   |  " + linia.servicio + "   |  " + linia.precio + "   |  " + linia.fecha));
+
+                            let btnUpdate = document.createElement("button");
+                            btnUpdate.innerHTML = "Modificar";
+                            btnUpdate.value = linia.id
+                            li.appendChild(btnUpdate);
+                            btnUpdate.addEventListener("click", function () { modificarTarea(btnUpdate.value) });
+
+                            let btnDelete = document.createElement("button");
+                            btnDelete.innerHTML = "Eliminar";
+                            btnDelete.value = linia.id;
+                            li.appendChild(btnDelete);
+                            btnDelete.addEventListener("click", function () { borrarTarea(btnDelete.value) });
+                            document.getElementById("ul").appendChild(li);
+                        }
+                    })
+            }
+            function crearTarea() {
+                document.getElementById("ul").innerHTML = "";
+
+                let linea = { servicio: document.getElementById("serviciointro").value, precio: document.getElementById("preciointro").value, hojaservicioid: document.getElementById("hojaidintro").value };
+                let params = {
+                    method: 'POST',
+                    body: JSON.stringify(linea),
+                    headers: {
+                        "Content-type": "application/json; charset=UTF-8"
+                    }
+                };
+                fetch('https://localhost:44388/api/Lineas', params)
+                    .then(response => response.json())
+                    .then(json => GetLinies())
+                    .catch(error => console.log(error));
+            }
+
+            function modificarTarea(id) {
+                if (confirm("Segur què ho vols modificar?") == true) {
+                    linea = { id: id, servicio: document.getElementById("serviciointro").value, precio: document.getElementById("preciointro").value, hojaservicioid: document.getElementById("hojaidintro").value };
+                    params = {
+                        method: 'PUT',
+                        body: JSON.stringify(linea),
+                        headers: {
+                            "Content-type": "application/json; charset=UTF-8"
+                        }
+                    };
+                    fetch('https://localhost:44388/api/Lineas/' + id, params)
+                        .then(response => response.json())
+                        .then(json => GetLinies())
+                        .catch(error => console.log(error));
+                }
+
+            }
+            function borrarTarea(id) {
+                if (confirm("Segur què ho vols eliminar?") == true) {
+                    params = {
+                        method: 'DELETE',
+                        headers: {
+                            "Content-type": "application/json; charset=UTF-8"
+                        }
+                    };
+                    fetch('https://localhost:44388/api/Lineas/' + id, params)
+                        .then(response => response.json())
+                        .then(json => GetLinies())
+                        .catch(error => console.log(error));
+                }
+            }
+
+
+        </script>
+</body>
+
+</html>
