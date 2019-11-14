@@ -16,19 +16,12 @@
 <style>
     body {
         padding: 2%;
-    }
-
-    .container {
-        padding: 2rem 0rem;
-    }
-
-    h4 {
-        margin: 2rem 0rem 1rem;
-    }
+    }   
 
     div {
         margin-bottom: 2%;
     }
+    
 </style>
 
 
@@ -49,8 +42,6 @@
 
     <h3>LÍNIES</h1>
         <ul id="ul" class="list-group"></ul>
-
-
 
         <script>
             GetLinies();
@@ -99,7 +90,7 @@
             }
 
             function modificarTarea(id) {
-                if (confirm("Segur què ho vols modificar?") == true) {
+                if (confirm("Confirma i recarrega la pàgina (F5) per modificar") == true) {
                     linea = { id: id, servicio: document.getElementById("serviciointro").value, precio: document.getElementById("preciointro").value, hojaservicioid: document.getElementById("hojaidintro").value };
                     params = {
                         method: 'PUT',
@@ -113,7 +104,6 @@
                         .then(json => GetLinies())
                         .catch(error => console.log(error));
                 }
-
             }
             function borrarTarea(id) {
                 if (confirm("Segur què ho vols eliminar?") == true) {
